@@ -413,59 +413,15 @@ website](https://www.nicepng.com/png/detail/137-1379308_website-work-in-progress
 ## Getting help <a name="help"></a>
 
 If you encounter any issues using this workflow, please use the
-repository’s **Issue** tracker.
-
-Consider the following steps before and when opening a new Issue:
-
-1.  Have you searched for similar issues that may have been already
-    reported? The issue tracker has a filter function to search for
-    keywords in open Issues. You can narrow down the search using
-    `labels`:label: as filters. See
-    [Labels](https://docs.github.com/en/issues/using-labels-and-milestones-to-track-work/managing-labels)
-    for more information. As a general rule, we don’t assign issues to
-    anyone.
-2.  Click on the green **New issue** button in the upper right corner,
-    and describe your problem as detailed as possible. The issue should
-    state what the problem is, what the expected behaviour should be,
-    and, maybe, suggest a solution. Note that you can also attach files
-    or images to the issue.
-3.  Select a suitable `label`:label: from the drop-down menu called
-    **Labels**.
-4.  Click on the green **Submit new issue** button and wait for a reply.
+repository’s [Issue
+tracker](https://github.com/HOPE-UIB-BIO/FOSSILPOL-workflow/issues), see
+detailes about it
+[here](https://github.com/HOPE-UIB-BIO/FOSSILPOL-workflow/blob/main/CONTRIBUTING#issues).
 
 ## Collabortion <a name="colab"></a>
 
 Do you think you can improve the workflow? We would love to collaborate
 :bangbang:
 
-Here is the recommended process:
-
-1.  Fork the repo so that you can make your changes without affecting
-    the original project until you’re ready to merge them. [Guide to
-    forking](https://docs.github.com/en/get-started/quickstart/fork-a-repo#fork-an-example-repository)
-2.  Commit your updates once you are happy with them. See contributing
-    [guide](https://github.com/atom/atom/blob/master/CONTRIBUTING.md#git-commit-messages)
-    to for commit messages.
-3.  When you’re finished with the changes, create a **pull request**,
-    also known as a PR.
-    -   Fill in the “Ready for review” template so that we can review
-        your PR. This template helps reviewers understand your changes
-        as well as the purpose of your pull request.
-    -   Don’t forget to [link PR to
-        issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)
-        if you are solving one.
-    -   Enable the checkbox to [allow maintainer
-        edits](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork)
-        so the branch can be updated for a merge. Once you submit your
-        PR, a HOPE team member will review your proposal. We may ask
-        questions or request additional information.
-    -   We may ask for changes to be made before a PR can be merged,
-        either using suggested changes or pull request comments. You can
-        apply suggested changes directly through the UI. You can make
-        any other changes in your fork, and then commit them to your
-        branch. As you update your PR and apply changes, mark each
-        conversation as
-        [resolved](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/commenting-on-a-pull-request#resolving-conversations)
-    -   If you run into any merge issues, check out this [git
-        tutorial](https://lab.github.com/githubtraining/managing-merge-conflicts)
-        to help you resolve merge conflicts and other issues.
+Check the [CONTRIBUTING
+page](https://github.com/HOPE-UIB-BIO/FOSSILPOL-workflow/blob/main/CONTRIBUTING)
