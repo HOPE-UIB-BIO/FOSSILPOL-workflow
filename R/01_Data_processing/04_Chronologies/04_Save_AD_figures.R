@@ -23,7 +23,7 @@ library(here)
 source(
   here::here("R/00_Config_file.R"))
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg = "Saving all Chronology models as figures")
 
 
@@ -31,7 +31,7 @@ fossilpol::util_output_message(
 # 2. Plot AD models  -----
 #----------------------------------------------------------#
 
-fossilpol::chron_save_ad_figures(
+RFossilpol::chron_save_ad_figures(
   dir = data_storage_path, # [config_criteria]
   date = current_date, # [config_criteria]
   image_width = image_width, # [config_criteria]

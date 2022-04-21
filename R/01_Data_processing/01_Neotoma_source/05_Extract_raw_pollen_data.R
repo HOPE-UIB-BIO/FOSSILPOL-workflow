@@ -27,7 +27,7 @@ source(
 # set the current environment
 current_env <- rlang::current_env()
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg = "Starting processing levels")
 
 
@@ -36,23 +36,23 @@ fossilpol::util_output_message(
 #----------------------------------------------------------#
 
 # load the data
-fossilpol::util_output_comment(
+RFossilpol::util_output_comment(
   msg = "Loading Neotoma chron control file")
 
 neotoma_meta_chron_control <-
-  fossilpol::util_load_latest_file(
+  RFossilpol::util_load_latest_file(
     file_name = "neotoma_meta_chron_control",
     dir = paste0(data_storage_path, #[config_criteria]
                  "/Data/Processed/Neotoma_processed/Neotoma_chron_control"))
 
 # test the presence of data
-fossilpol::util_check_if_loaded(
+RFossilpol::util_check_if_loaded(
   file_name = "neotoma_meta_chron_control",
   env = current_env)
 
 
 neotoma_sites_sample_depth <- 
-  fossilpol::proc_neo_get_sample_depth(
+  RFossilpol::proc_neo_get_sample_depth(
     neotoma_meta_chron_control,
     min_n_levels #[config_criteria]
   )
@@ -62,17 +62,17 @@ neotoma_sites_sample_depth <-
 # 2. Raw counts and ecological groups  -----
 #----------------------------------------------------------#
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg = "Preparing selection of ecological groups")
 
-fossilpol::util_output_comment(
+RFossilpol::util_output_comment(
   msg = paste(
     "For the explannation of ecological groups aberrations, please see\n",
     "'Technical guide to FOSSILPOL: The workflow to process",
     "global palaeoecological pollen data'"))
 
 neotoma_counts <-
-  fossilpol::proc_neo_get_raw_counts(
+  RFossilpol::proc_neo_get_raw_counts(
     neotoma_sites_sample_depth,
     sel_var_element #[config_criteria]
     )   
@@ -83,17 +83,17 @@ neotoma_counts <-
 #----------------------------------------------------------#
 
 neotoma_processed <- 
-  fossilpol:::proc_neo_check_final_assembly(neotoma_counts)
+  RFossilpol::proc_neo_check_final_assembly(neotoma_counts)
 
 
 #----------------------------------------------------------#
 # 4. Save the data  -----
 #----------------------------------------------------------#
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg = "Saving 'neotoma_processed'")
 
-fossilpol::util_save_if_latests(
+RFossilpol::util_save_if_latests(
   file_name = "neotoma_processed",
   dir = paste0(
     data_storage_path, #[config_criteria]

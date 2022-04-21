@@ -27,7 +27,7 @@ source(
 # set the current environment
 current_env <- rlang::current_env()
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg =  "Processing Neotoma files")
 
 
@@ -35,18 +35,18 @@ fossilpol::util_output_message(
 # 2. Load latest data  -----
 #----------------------------------------------------------#
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg = "Loading Neotoma file")
 
 # load the data
 neotoma_download <-
-  fossilpol::util_load_latest_file(
+  RFossilpol::util_load_latest_file(
     file_name = "neotoma_download",
     dir = paste0(data_storage_path, #[config_criteria]
                  "/Data/Input/Neotoma_download"))
 
 # test the presence of data
-fossilpol::util_check_if_loaded(
+RFossilpol::util_check_if_loaded(
   file_name = "neotoma_download",
   env = current_env)
 
@@ -56,7 +56,7 @@ fossilpol::util_check_if_loaded(
 #----------------------------------------------------------#
 
 neotoma_meta_samples <- 
-  fossilpol::proc_neo_get_metadata_with_samples(
+  RFossilpol::proc_neo_get_metadata_with_samples(
     neotoma_download,
     long_min, #[config_criteria]
     long_max, #[config_criteria]
@@ -73,7 +73,7 @@ neotoma_meta_samples <-
 
 # Extract information about dataset authors
 neotoma_sites_authors <- 
-  fossilpol::proc_neo_get_authors(
+  RFossilpol::proc_neo_get_authors(
     neotoma_download = neotoma_download,
     dataset_ids = neotoma_meta_samples$dataset_id,
     download_new = TRUE,
@@ -81,7 +81,7 @@ neotoma_sites_authors <-
   )
 
 # Update the project database
-fossilpol::proc_neo_update_project_database(
+RFossilpol::proc_neo_update_project_database(
   neotoma_sites_authors = neotoma_sites_authors, 
   neotoma_meta_samples = neotoma_meta_samples,
   dir = data_storage_path #[config_criteria]
@@ -92,10 +92,10 @@ fossilpol::proc_neo_update_project_database(
 # 4. Save the data -----
 #----------------------------------------------------------#
 
-fossilpol::util_output_comment(
+RFossilpol::util_output_comment(
   msg = "Saving outputs")
 
-fossilpol::util_save_if_latests(
+RFossilpol::util_save_if_latests(
   file_name = "neotoma_meta_samples",
   dir = paste0(data_storage_path, #[config_criteria]
                "/Data/Processed/Neotoma_processed/Neotoma_meta"),

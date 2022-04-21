@@ -29,11 +29,11 @@ source(
 # set the current environment
 current_env <- rlang::current_env()
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg = "Starting preparing chronology control tables for AD modeling")
 
 # Prepare calibration curves
-fossilpol::chron_prepare_cal_curves()
+RFossilpol::chron_prepare_cal_curves()
 
 
 #----------------------------------------------------------#
@@ -42,13 +42,13 @@ fossilpol::chron_prepare_cal_curves()
 
 # load data
 data_merged <-
-  fossilpol::util_load_latest_file(
+  RFossilpol::util_load_latest_file(
     file_name = "data_merged",
     dir = paste0(data_storage_path, #[config_criteria]
                  "/Data/Processed/Data_merged"))
 
 # test the presence of data
-fossilpol::util_check_if_loaded(
+RFossilpol::util_check_if_loaded(
   file_name = "data_merged",
   env = current_env)
 
@@ -57,7 +57,7 @@ fossilpol::util_check_if_loaded(
 #----------------------------------------------------------#
 
 chron_control_tables <- 
-  fossilpol::chron_get_control_tables(
+  RFossilpol::chron_get_control_tables(
     data_source = data_merged,
     min_n_of_control_points = min_n_of_control_points #[config_criteria]
   )
@@ -68,7 +68,7 @@ chron_control_tables <-
 #----------------------------------------------------------#
 
 chron_control_tables_subset <- 
-  fossilpol::chron_subset_previous_sequences(
+  RFossilpol::chron_subset_previous_sequences(
     data_source = chron_control_tables,
     dir = data_storage_path, #[config_criteria]
     rerun_ad = calc_AD_models_denovo, #[config_criteria]
@@ -82,7 +82,7 @@ chron_control_tables_subset <-
 #----------------------------------------------------------#
 
 chron_control_types <- 
-  fossilpol::chron_get_control_types(
+  RFossilpol::chron_get_control_types(
     data_source = chron_control_tables_subset,
     dir = data_storage_path #[config_criteria]
   )
@@ -93,7 +93,7 @@ chron_control_types <-
 #----------------------------------------------------------#
 
 chron_tables_prepared <- 
-  fossilpol::chron_prepare_for_ad_modelling(
+  RFossilpol::chron_prepare_for_ad_modelling(
     data_source = chron_control_tables_subset,
     chron_control_types = chron_control_types,
     default_thickness = default_thickness, #[config_criteria]
@@ -109,7 +109,7 @@ chron_tables_prepared <-
 # 7. Save the data  -----
 #----------------------------------------------------------#
 
-fossilpol::util_save_if_latests(
+RFossilpol::util_save_if_latests(
   file_name = "chron_tables_prepared",
   dir = paste0(
     data_storage_path, #[config_criteria]

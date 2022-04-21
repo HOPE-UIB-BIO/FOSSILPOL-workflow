@@ -25,7 +25,7 @@ library(here)
 source(
   here::here("R/00_Config_file.R"))
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg = "Joining result of AD and predict ages for individual levels")
 
 #[USER] here can user specify which dataset_ids should be re-run additionally
@@ -48,7 +48,7 @@ chron_output <-
 
 # check the current state and setting of chronology 
 current_state <-
-  fossilpol::chron_get_current_state(
+  RFossilpol::chron_get_current_state(
     dir = data_storage_path, #[config_criteria]
     calc_AD_models_denovo = calc_AD_models_denovo,
     predict_ages_denovo = predict_ages_denovo)
@@ -56,7 +56,7 @@ current_state <-
 # get the data to be predicted based on the current chronology result and 
 #   the current state and setting of chronology
 data_to_predict <- 
-  fossilpol::chron_prepare_ad_to_predict(
+  RFossilpol::chron_prepare_ad_to_predict(
     data_source = chron_output,
     sites_to_rerun = sites_to_rerun,
     dir = data_storage_path, #[config_criteria]
@@ -68,7 +68,7 @@ data_to_predict <-
 #----------------------------------------------------------#
 
 predicted_ages <- 
-  fossilpol::chron_predict_all_ages(
+  RFossilpol::chron_predict_all_ages(
     data_source = data_to_predict,
     dir = data_storage_path, #[config_criteria]
     date = current_date #[config_criteria]
@@ -79,7 +79,7 @@ predicted_ages <-
 # 4. Save the data  -----
 #----------------------------------------------------------#
 
-fossilpol::chron_save_results(
+RFossilpol::chron_save_results(
   data_source_predicted_ages = predicted_ages,
   data_source_to_predict = data_to_predict,
   current_state = current_state,

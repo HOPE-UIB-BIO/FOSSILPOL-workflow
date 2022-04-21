@@ -32,16 +32,16 @@ if(!exists("update_repo_packages", envir = current_env)){
 
 if(update_repo_packages == TRUE){
   
-  # install fossilpol from github
-  if (!exists("already_installed_fossilpol", envir = current_env)){
-    already_installed_fossilpol <- FALSE
+  # install RFossilpol from github
+  if (!exists("already_installed_RFossilpol", envir = current_env)){
+    already_installed_RFossilpol <- FALSE
   }
   
-  if(already_installed_fossilpol == FALSE){
-    devtools::install_github("HOPE-UIB-BIO/fossilpol",
+  if(already_installed_RFossilpol == FALSE){
+    devtools::install_github("HOPE-UIB-BIO/R-Fossilpol-package",
                              quiet = FALSE,
                              upgrade = FALSE)
-    already_installed_fossilpol <- TRUE
+    already_installed_RFossilpol <- TRUE
   }
   
   if (!exists("already_synch", envir = current_env)){
@@ -64,7 +64,7 @@ package_list <-
   c(
     "devtools",
     "Bchron",
-    "fossilpol",
+    "RFossilpol",
     "here",     
     "tidyverse"
   )
@@ -109,7 +109,7 @@ sapply(
 data_storage_path <- current_dir # [USER]
 
 # create all essential folders 
-fossilpol::util_make_datastorage_folders(
+RFossilpol::util_make_datastorage_folders(
   dir = data_storage_path #[config_criteria]
   )
 
@@ -312,5 +312,5 @@ image_dpi <- 300 # [USER]
 # 7. Save current config setting -----
 #----------------------------------------------------------#
 
-current_setting <- fossilpol:::util_extract_config_data()
+current_setting <- RFossilpol::util_extract_config_data()
 

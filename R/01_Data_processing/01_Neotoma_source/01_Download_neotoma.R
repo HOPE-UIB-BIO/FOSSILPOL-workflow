@@ -24,7 +24,7 @@ library(here)
 source(
   here::here("R/00_Config_file.R"))
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg = "Start to download Neotoma files")
 
 
@@ -33,7 +33,7 @@ fossilpol::util_output_message(
 #----------------------------------------------------------#
 
 allds <- 
-  fossilpol::proc_neo_get_all_neotoma_datasets(
+  RFossilpol::proc_neo_get_all_neotoma_datasets(
     dataset_type, #[config_criteria]
     long_min, #[config_criteria]
     long_max, #[config_criteria]
@@ -43,17 +43,17 @@ allds <-
 
 # Download all sequences
 neotoma_download <-
-  fossilpol::proc_neo_download_sequences(allds)
+  RFossilpol::proc_neo_download_sequences(allds)
 
 
 #----------------------------------------------------------#
 # 2. Save the Neotoma pollen database -----
 #----------------------------------------------------------#
 
-fossilpol::util_output_comment(
+RFossilpol::util_output_comment(
   msg = "Saving 'neotoma_download'")
 
-fossilpol::util_save_if_latests(
+RFossilpol::util_save_if_latests(
   file_name = "neotoma_download",
   dir = paste0(data_storage_path, #[config_criteria]
                "/Data/Input/Neotoma_download"),

@@ -34,7 +34,7 @@ source(
 #----------------------------------------------------------#
 
 data_full <- 
-  fossilpol::proc_get_merged_dataset(data_storage_path, #[config_criteria]
+  RFossilpol::proc_get_merged_dataset(data_storage_path, #[config_criteria]
                                      private_data)
 
 
@@ -45,7 +45,7 @@ data_full <-
 # test for potential duplicated sequences between private data and Neotoma
 if(detect_duplicates == TRUE & private_data == TRUE) { #[config_criteria]
   data_full_filtered <- 
-    fossilpol::proc_filter_out_duplicates(
+    RFossilpol::proc_filter_out_duplicates(
       data_source = data_full,
       data_storage_path = data_storage_path, #[config_criteria]
       filter_var = "source_of_data",
@@ -69,7 +69,7 @@ user_name_patterns <- NULL
 #     "Taxon2" = "tax_02")
 
 data_clean_names <- 
-  fossilpol::proc_clean_count_names(
+  RFossilpol::proc_clean_count_names(
     data_source = data_full_filtered, 
     additional_patterns = user_name_patterns)
 
@@ -79,7 +79,7 @@ data_clean_names <-
 #----------------------------------------------------------#
 
 data_sorted <- 
-  fossilpol::proc_prepare_raw_count_levels(data_clean_names)
+  RFossilpol::proc_prepare_raw_count_levels(data_clean_names)
 
 
 #----------------------------------------------------------#
@@ -133,7 +133,7 @@ optional_info_to_assign <-
   )
 
 data_geo <- 
-  fossilpol::geo_assign_by_list(
+  RFossilpol::geo_assign_by_list(
     data_source = data_sorted, 
     dir = current_dir, #[config criteria]
     optional_info_to_assign = optional_info_to_assign)
@@ -143,7 +143,7 @@ data_geo <-
 #----------------------------------------------------------#
 
 data_merged <-
-  fossilpol::proc_add_region_age_limits(
+  RFossilpol::proc_add_region_age_limits(
     data_source = data_geo, 
     dir = data_storage_path #[config criteria]
     )
@@ -152,10 +152,10 @@ data_merged <-
 # 13. Save -----
 #----------------------------------------------------------#
 
-fossilpol::util_output_comment(
+RFossilpol::util_output_comment(
   msg = "Saving the data")
 
-fossilpol::util_save_if_latests(
+RFossilpol::util_save_if_latests(
   file_name = "data_merged",
   dir = paste0(data_storage_path, #[config criteria]
                "/Data/Processed/Data_merged"),

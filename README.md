@@ -24,7 +24,7 @@ Flantua, Kuber P. Bhatta
 ## Current version of the FOSSILPOL project
 
 The version of the FOSSILPOL workflow: 0.0.1 The version of the
-Technical guide to FOSSILPOL: 0.0.1 The version of the R-fossilpol
+Technical guide to FOSSILPOL: 0.0.1 The version of the RFossilpol
 package: 0.0.1
 
 ## Package website

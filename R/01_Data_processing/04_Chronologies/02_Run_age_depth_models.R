@@ -31,7 +31,7 @@ source(
 #----------------------------------------------------------#
 
 full_chron_table <- 
-  fossilpol:::chron_load_data_for_ad_modelling(
+  RFossilpol::chron_load_data_for_ad_modelling(
     data_storage_path #[config_criteria]
     )
 
@@ -40,7 +40,7 @@ full_chron_table <-
 #----------------------------------------------------------#
 
 chron_output <- 
-  fossilpol::chron_recalibrate_ad_models(
+  RFossilpol::chron_recalibrate_ad_models(
     data_source = full_chron_table,
     batch_size = batch_size, #[config_criteria]
     number_of_cores = number_of_cores, #[config_criteria]
@@ -59,7 +59,7 @@ chron_output <-
 # 4. Save the data  -----
 #----------------------------------------------------------#
 
-fossilpol::util_output_comment(
+RFossilpol::util_output_comment(
   msg = "Saving temporary file. This can take time.")
 
 readr::write_rds(

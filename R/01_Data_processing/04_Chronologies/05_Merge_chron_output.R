@@ -26,7 +26,7 @@ library(here)
 source(
   here::here("R/00_Config_file.R"))
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg = "Loading Chronology outputs and merged data")
 
 
@@ -35,7 +35,7 @@ fossilpol::util_output_message(
 #----------------------------------------------------------#
 
 data_with_chronologies <-
-  fossilpol::chron_merge_results(
+  RFossilpol::chron_merge_results(
     dir = data_storage_path #[config_criteria]
   )
 
@@ -44,7 +44,7 @@ data_with_chronologies <-
 # 4. Save the data  -----
 #----------------------------------------------------------#
 
-fossilpol::util_save_if_latests(
+RFossilpol::util_save_if_latests(
   file_name = "data_with_chronologies",
   dir = paste0(
     data_storage_path, #[config_criteria]

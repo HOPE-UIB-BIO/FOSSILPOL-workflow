@@ -27,7 +27,7 @@ source(
 # set the current environment
 current_env <- rlang::current_env()
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg = "Preparation of harmonisation tables and harmonisation of pollen taxa")
 
 
@@ -36,14 +36,14 @@ fossilpol::util_output_message(
 #----------------------------------------------------------#
 
 data_with_chronologies <- 
-  fossilpol::util_load_latest_file(
+  RFossilpol::util_load_latest_file(
     file_name = "data_with_chronologies",
     dir = paste0(
       data_storage_path, #[config_criteria]
       "/Data/Processed/Data_with_chronologies"))
 
 # test the presence of data
-fossilpol::util_check_if_loaded(
+RFossilpol::util_check_if_loaded(
   file_name = "data_with_chronologies",
   env = current_env)
 
@@ -53,7 +53,7 @@ fossilpol::util_check_if_loaded(
 #----------------------------------------------------------#
 
 harmonisation_tables <-
-  fossilpol::harm_get_all_tables(
+  RFossilpol::harm_get_all_tables(
     data_source = data_with_chronologies,
     dir = data_storage_path #[config_criteria]
   )
@@ -64,7 +64,7 @@ harmonisation_tables <-
 #----------------------------------------------------------#
 
 data_harmonised <- 
-  fossilpol::harmonise_all_regions(
+  RFossilpol::harmonise_all_regions(
     data_source = data_with_chronologies,
     harmonisation_tables = harmonisation_tables,
     original_name = "taxon_name",
@@ -78,7 +78,7 @@ data_harmonised <-
 # 5. Save the data  -----
 #----------------------------------------------------------#
 
-fossilpol::util_save_if_latests(
+RFossilpol::util_save_if_latests(
   file_name = "data_harmonised",
   dir = paste0(
     data_storage_path, #[config_criteria]

@@ -27,7 +27,7 @@ source(
 # set the current environment
 current_env <- rlang::current_env()
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg = "Start creation of pollen diagrams")
 
 
@@ -36,13 +36,13 @@ fossilpol::util_output_message(
 #----------------------------------------------------------#
 
 data_filtered <- 
-  fossilpol::util_load_latest_file(
+  RFossilpol::util_load_latest_file(
     file_name = "data_filtered",
     dir = paste0(data_storage_path, #[config_criteria]
                  "/Data/Processed/Data_filtered/"))
 
 # test the presence of data
-fossilpol::util_check_if_loaded(
+RFossilpol::util_check_if_loaded(
   file_name = "data_filtered",
   env = current_env)
 
@@ -51,7 +51,7 @@ fossilpol::util_check_if_loaded(
 # 3. Plot all pollen diagrams -----
 #----------------------------------------------------------#
 
-fossilpol::plot_all_pollen_diagrams(
+RFossilpol::plot_all_pollen_diagrams(
   data_source = data_filtered,
   dir = data_storage_path, #[config_criteria]
   min_n_occur = 3, # [USER] Here, user can select min number of occurrence 

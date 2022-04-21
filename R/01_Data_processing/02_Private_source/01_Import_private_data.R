@@ -25,7 +25,7 @@ source(
   here::here(
     "R/00_Config_file.R"))
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg = "Starting combining private data sources")
 
 
@@ -36,7 +36,7 @@ fossilpol::util_output_message(
 # load all private dataset
 # load all private dataset
 private_data_assembly <-
-  fossilpol::import_datasets_from_folder(
+  RFossilpol::import_datasets_from_folder(
     # path to the folder with private datasets in .xlsx format (prepared using
     #   the template provided)
     dir_files = paste0(data_storage_path, #[config_criteria]
@@ -58,7 +58,7 @@ private_data_assembly <-
 #----------------------------------------------------------#
 
 private_data_prepared <- 
-  fossilpol::proc_priv_prepare(
+  RFossilpol::proc_priv_prepare(
     private_data_assembly,
     data_storage_path, #[config_criteria]
     min_n_levels, #[config_criteria]
@@ -74,10 +74,10 @@ private_data_prepared <-
 # 4. Save the tibble of the combined private datasets  -----
 #----------------------------------------------------------#
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg = "Saving 'private_data_prepared'")
 
-fossilpol::util_save_if_latests(
+RFossilpol::util_save_if_latests(
   file_name = "private_data_prepared",
   dir = paste0(data_storage_path, #[config_criteria]
                "/Data/Processed/Private"),

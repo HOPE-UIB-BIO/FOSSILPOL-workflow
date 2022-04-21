@@ -38,7 +38,7 @@ working_dir <-
 if(neotoma_new_download == TRUE){
   
   download_confirm <- 
-    fossilpol::util_confirm_based_on_presence(
+    RFossilpol::util_confirm_based_on_presence(
       dir = paste0(data_storage_path, #[config_criteria]
                    "/Data/Input/Neotoma_download"),
       file_name = "neotoma_download",

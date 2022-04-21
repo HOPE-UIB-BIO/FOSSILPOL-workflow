@@ -38,7 +38,7 @@ working_dir <-
 if(recalib_AD_models == TRUE){ #[config_criteria]
   
   run_ad_confirm <- 
-    fossilpol::util_confirm_based_on_presence(
+    RFossilpol::util_confirm_based_on_presence(
       dir = paste0(data_storage_path, #[config_criteria]
                    "/Data/Processed/Chronology/Predicted_ages"),
       file_name = "chron_predicted_ages",

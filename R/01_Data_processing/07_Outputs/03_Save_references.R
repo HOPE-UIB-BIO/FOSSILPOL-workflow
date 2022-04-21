@@ -27,7 +27,7 @@ source(
 # set the current environment
 current_env <- rlang::current_env()
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg = "Saving infomation about data assembly")
 
 
@@ -36,13 +36,13 @@ fossilpol::util_output_message(
 #----------------------------------------------------------#
 
 data_assembly <- 
-  fossilpol::util_load_latest_file(
+  RFossilpol::util_load_latest_file(
     file_name = "data_assembly",
     dir =paste0(data_storage_path, #[config_criteria]
                 "/Outputs/Data/"))
 
 # test the presence of data
-fossilpol::util_check_if_loaded(
+RFossilpol::util_check_if_loaded(
   file_name = "data_assembly",
   env = current_env)
 
@@ -58,7 +58,7 @@ project_dataset_database <-
 # 3.  Save data assembly references -----
 #----------------------------------------------------------#
 
-fossilpol::proc_save_references(
+RFossilpol::proc_save_references(
   data_source = data_assembly,
   project_database = project_dataset_database,
   user_sel_variables = c(), # [USER] Here can user select variables, 

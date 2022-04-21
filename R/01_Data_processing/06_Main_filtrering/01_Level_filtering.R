@@ -28,7 +28,7 @@ source(
 # set the current environment
 current_env <- rlang::current_env()
 
-fossilpol::util_output_message(
+RFossilpol::util_output_message(
   msg = "Start of process of sequence filtration")
 
 
@@ -37,7 +37,7 @@ fossilpol::util_output_message(
 #----------------------------------------------------------#
 
 data_harmonised <- 
-  fossilpol::util_load_latest_file(
+  RFossilpol::util_load_latest_file(
     file_name = "data_harmonised",
     dir = paste0(
       data_storage_path, #[config_criteria]
@@ -45,7 +45,7 @@ data_harmonised <-
 
 
 # test the presence of data
-fossilpol::util_check_if_loaded(
+RFossilpol::util_check_if_loaded(
   file_name = "data_harmonised",
   env = current_env)
 
@@ -56,7 +56,7 @@ fossilpol::util_check_if_loaded(
 #----------------------------------------------------------#
 
 data_filtered <- 
-  fossilpol::proc_filter_all_data(
+  RFossilpol::proc_filter_all_data(
     data_source = data_harmonised,
     dir = data_storage_path, #[config_criteria]
     filter_by_pollen_sum = filter_by_pollen_sum, #[config_criteria]
@@ -78,7 +78,7 @@ data_filtered <-
 # 3. Save   -----
 #----------------------------------------------------------#
 
-fossilpol::util_save_if_latests(
+RFossilpol::util_save_if_latests(
   file_name = "data_filtered",
   dir = paste0(data_storage_path, #[config_criteria]
                "/Data/Processed/Data_filtered/"))

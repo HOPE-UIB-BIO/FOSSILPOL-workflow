@@ -33,13 +33,13 @@ current_env <- rlang::current_env()
 #----------------------------------------------------------#
 
 data_filtered <- 
-  fossilpol::util_load_latest_file(
+  RFossilpol::util_load_latest_file(
     file_name = "data_filtered",
     dir = paste0(data_storage_path, #[config_criteria]
                  "/Data/Processed/Data_filtered/"))
 
 # test the presence of data
-fossilpol::util_check_if_loaded(
+RFossilpol::util_check_if_loaded(
   file_name = "data_filtered",
   env = current_env)
 
@@ -48,7 +48,7 @@ fossilpol::util_check_if_loaded(
 # 3. Save assembly  -----
 #----------------------------------------------------------#
 
-fossilpol::proc_save_assembly(
+RFossilpol::proc_save_assembly(
   data_source = data_filtered,
   user_sel_variables = c("long", "lat"), # [USER] Here can user variables, 
   # which have to be present in the  final data assembly (other can be selected

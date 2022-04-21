@@ -62,9 +62,9 @@ install_packages <-
     # install all packages in the lst from CRAN
     sapply(pkgs_list, utils::install.packages, character.only = TRUE)
     
-    # install fossilpol from GitHub
+    # install RFossilpol from GitHub
     devtools::install_github(
-      "HOPE-UIB-BIO/fossilpol",
+      "HOPE-UIB-BIO/R-Fossilpol-package",
       quiet = FALSE,
       upgrade = FALSE)
   }
