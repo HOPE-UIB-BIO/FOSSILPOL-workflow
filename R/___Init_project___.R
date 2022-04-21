@@ -1,0 +1,119 @@
+#----------------------------------------------------------#
+#
+#
+#                 The FOSSILPOL workflow 
+#
+#                     Project setup
+#                 
+#
+#   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon 
+#                         2021
+#
+#----------------------------------------------------------#
+
+# Script to prepare all necessary components of environment to run the Project.
+#   Needs to be run only once
+
+
+#----------------------------------------------------------#
+# Step 0: Define package list and custom function -----
+#----------------------------------------------------------#
+
+# list of all CRAN packages
+package_list <- 
+  c(
+    "assertthat",
+    "Bchron",
+    "devtools",
+    "dplyr",
+    "furrr",
+    "ggplot2",
+    "grDevices",
+    "here",      
+    "httr",
+    "IntCal",
+    "janitor",
+    "lifecycle",
+    "magrittr",
+    "plyr",
+    "purrr",
+    "R.utils",
+    "rcarbon",
+    "readr",
+    "rioja",
+    "rlang",
+    "sf",
+    "sp",
+    "stats",
+    "stringr",
+    "tibble",
+    "tidyr",
+    "tidyselect",
+    "tidyverse",
+    "utils"
+  )
+
+
+
+# define helper function
+install_packages <- 
+  function(pkgs_list) {
+    
+    # install all packages in the lst from CRAN
+    sapply(pkgs_list, utils::install.packages, character.only = TRUE)
+    
+    # install fossilpol from GitHub
+    devtools::install_github(
+      "HOPE-UIB-BIO/fossilpol",
+      quiet = FALSE,
+      upgrade = FALSE)
+  }
+
+
+#----------------------------------------------------------#
+# Step 1: Install 'renv' package -----
+#----------------------------------------------------------#
+
+utils::install.packages("renv")
+
+
+#----------------------------------------------------------#
+# Step 2: Deactivate 'renv' package -----
+#----------------------------------------------------------#
+
+# deactivate to make sure that packages are updated on the machine
+renv::deactivate()
+
+
+#----------------------------------------------------------#
+# Step 3: Install packages to the machine
+#----------------------------------------------------------#
+
+install_packages(package_list)
+
+
+#----------------------------------------------------------#
+# Step 4: Activate 'renv' project
+#----------------------------------------------------------#
+
+renv::activate()
+
+
+#----------------------------------------------------------#
+# Step 5: Install packages to the project
+#----------------------------------------------------------#
+
+install_packages(package_list)
+
+
+#----------------------------------------------------------#
+# Step 6: Synchronize package versions with the project 
+#----------------------------------------------------------#
+
+library(here)
+renv::restore(lockfile = here::here( "renv/library_list.lock"))
+
+
+#----------------------------------------------------------#
+# Step 7: Run the project 
+#----------------------------------------------------------#
