@@ -30,7 +30,7 @@ package: 0.0.1
 ## Package website
 
 More detailed information can be found on [FOSSILPOL
-website](https://www.nicepng.com/png/detail/137-1379308_website-work-in-progress.png)
+website](https://hope-uib-bio.github.io/FOSSILPOL-website/)
 
 ## Table of Contents
 
@@ -52,7 +52,7 @@ website](https://www.nicepng.com/png/detail/137-1379308_website-work-in-progress
 This project consists of several folders:file\_folder:, with the
 simplified structure visualised below. The full project structure can be
 found on [FOSSILPOL
-website](https://www.nicepng.com/png/detail/137-1379308_website-work-in-progress.png).
+website](https://hope-uib-bio.github.io/FOSSILPOL-website/).
 
 Through the text emotes will be used to specify **folder/s**
 (:file\_folder:), a single **R script** (:page\_facing\_up:), and
