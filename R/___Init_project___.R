@@ -27,6 +27,7 @@ package_list <-
     "devtools",
     "dplyr",
     "furrr",
+    "future",
     "ggplot2",
     "grDevices",
     "here",      
