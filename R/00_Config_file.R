@@ -126,7 +126,7 @@ if("project_dataset_database.rds" %in%
        "/Data/Personal_database_storage") ) == FALSE){
   
   project_dataset_database <-
-    methods::new("proj_db_class")
+    RFossilpol:::proj_db_class()
   
   readr::write_rds(
     project_dataset_database,
