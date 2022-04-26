@@ -50,9 +50,12 @@ chron_output <-
     iteration_multiplier = iteration_multiplier, #[config_criteria]
     set_seed = set_seed, #[config_criteria]
     dir = data_storage_path, #[config_criteria]
-    batch_attemps = 3 # [USER] Number of tries each batch should be considered 
+    batch_attemps = 3, # [USER] Number of tries each batch should be considered 
     # before skipping it
-    )
+    time_per_sequecne = 200 # [USER] Maximum time dedicated to estimation of a 
+    # single sequence. User can increase this if a sequences is being skipped 
+    # before finishing estimation. 
+  )
 
 
 #----------------------------------------------------------#
