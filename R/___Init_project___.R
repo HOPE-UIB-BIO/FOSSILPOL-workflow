@@ -51,6 +51,7 @@ package_list <-
     "tidyr",
     "tidyselect",
     "tidyverse",
+    "usethis",
     "utils"
   )
 
