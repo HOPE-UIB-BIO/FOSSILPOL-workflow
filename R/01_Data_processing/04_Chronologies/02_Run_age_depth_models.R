@@ -52,7 +52,7 @@ chron_output <-
     dir = data_storage_path, #[config_criteria]
     batch_attempts = 3, # [USER] Number of tries each batch should be considered 
     # before skipping it
-    time_per_sequecne = 200 # [USER] Maximum time dedicated to estimation of a 
+    time_per_sequence = 200 # [USER] Maximum time dedicated to estimation of a 
     # single sequence. User can increase this if a sequences is being skipped 
     # before finishing estimation. 
   )
