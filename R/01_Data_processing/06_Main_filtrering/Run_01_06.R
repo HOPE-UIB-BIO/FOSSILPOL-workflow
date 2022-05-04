@@ -32,7 +32,7 @@ source(
 
 working_dir <- 
   paste0(current_dir, #[config_criteria]
-         "/R/01_Data_processing/06_Main_filtrering.R/")
+         "/R/01_Data_processing/06_Main_filtrering/")
 
 source(
   paste0(working_dir, "01_Level_filtering.R"))
