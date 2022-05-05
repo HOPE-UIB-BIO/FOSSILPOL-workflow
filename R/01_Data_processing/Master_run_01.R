@@ -60,7 +60,7 @@ source(
 source(
   paste0(current_dir, 
          "/R/01_Data_processing/",
-         "06_Main_filtrering.R/Run_01_06.R"))
+         "06_Main_filtrering/Run_01_06.R"))
 
 source(
   paste0(current_dir, 
