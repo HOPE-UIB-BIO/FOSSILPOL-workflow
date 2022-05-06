@@ -3,7 +3,7 @@
 #
 #                 The FOSSILPOL workflow 
 #
-#         Apply taxonomic harmonization based on
+#         Apply taxonomic harmonisation based on
 #                 regional tables
 #
 #   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon 
