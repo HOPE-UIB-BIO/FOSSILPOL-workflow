@@ -43,7 +43,7 @@ if(recalib_AD_models == TRUE){ #[config_criteria]
                    "/Data/Processed/Chronology/Predicted_ages"),
       file_name = "chron_predicted_ages",
       msg = paste("Detcted previous calculation of age-depth models.",
-                  "Are you sure you don't want to run age-depth modeling?"))
+                  "Are you sure you want to run age-depth modeling?"))
   
   # download data
   if(run_ad_confirm == TRUE){
