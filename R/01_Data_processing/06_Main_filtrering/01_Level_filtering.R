@@ -58,7 +58,15 @@ RFossilpol::util_check_if_loaded(
 data_filtered <- 
   RFossilpol::proc_filter_all_data(
     data_source = data_harmonised,
-    dir = data_storage_path, #[config_criteria]
+    msg = paste(
+      "Please revise the 'regional_age_limits' table in ",
+      paste0(data_storage_path, #[config_criteria]
+             "/Data/Input/Regional_age_limits/."),
+      "Then re-run script from '03_Merging_and_geography'"),
+    variable_vec = c("levels",
+                     "raw_counts",
+                     "counts_harmonised",
+                     "age_uncertainty"),
     filter_by_pollen_sum = filter_by_pollen_sum, #[config_criteria]
     filter_by_age_limit = filter_by_age_limit, #[config_criteria]
     filter_by_extrapolation = filter_by_extrapolation, #[config_criteria]
