@@ -11,7 +11,7 @@
 #
 #----------------------------------------------------------#
 
-# Run all scripts in `/R/01_Data_processing/06_Main_filtrering.R/`
+# Run all scripts in `/R/01_Data_processing/06_Main_filtrering/`
 #   Filter out levels and sequences based on several criteria selected in 
 #   Config File
 
