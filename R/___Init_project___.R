@@ -113,7 +113,16 @@ install_packages(package_list)
 #----------------------------------------------------------#
 
 library(here)
-renv::restore(lockfile = here::here( "renv/library_list.lock"))
+
+# if there is no lock file present make a new snapshot
+if
+(
+  isFALSE("library_list.lock" %in% list.files(here::here("renv")))
+) {
+  renv::snapshot(lockfile = here::here("renv/library_list.lock"))
+} else {
+  renv::restore(lockfile = here::here("renv/library_list.lock"))  
+}
 
 
 #----------------------------------------------------------#
