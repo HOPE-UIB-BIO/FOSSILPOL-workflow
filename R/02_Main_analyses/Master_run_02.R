@@ -4,15 +4,15 @@
 #                       Project name
 #
 #            Source all code for main analyses
-#                 
 #
-#                         Names 
+#
+#                         Names
 #                         Year
 #
 #----------------------------------------------------------#
 
-# Sources all or selected processing steps in the folder of 
-# `03_Main analyses`. These analyses are meant for the main output such as 
+# Sources all or selected processing steps in the folder of
+# `03_Main analyses`. These analyses are meant for the main output such as
 # the most important figures and tables of analyses
 
 
@@ -20,17 +20,18 @@
 # 1. Set up run -----
 #----------------------------------------------------------#
 
-rm(list = ls())
+library(here)
 
 # Load configuration
-source("R/00_Config_file.R")
-
+source(
+  here::here("R/00_Config_file.R")
+)
 
 #----------------------------------------------------------#
 # 2. Run individual parts -----
 #----------------------------------------------------------#
 
-working_dir <- 
+working_dir <-
   here::here(current_dir, "R/02_Main_analyses/")
 
 # examples
@@ -43,5 +44,3 @@ working_dir <-
 #   here::here(
 #     working_dir,
 #     "02_Analyses_ABC/Run_02_02.R"))
-
-

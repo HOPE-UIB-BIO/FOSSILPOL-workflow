@@ -3,14 +3,6 @@ output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
-
 # FOSSILPOL: The workflow to process global palaeoecological pollen data
 
 <!-- badges: start -->

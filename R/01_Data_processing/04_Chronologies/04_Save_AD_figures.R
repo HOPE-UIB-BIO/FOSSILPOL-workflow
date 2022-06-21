@@ -1,12 +1,12 @@
 #----------------------------------------------------------#
 #
 #
-#                 The FOSSILPOL workflow 
+#                 The FOSSILPOL workflow
 #
-#               Save figures of age-depth model 
-#                 
+#               Save figures of age-depth model
 #
-#   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon 
+#
+#   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
 #                         2021
 #
 #----------------------------------------------------------#
@@ -21,10 +21,12 @@ library(here)
 
 # Load configuration
 source(
-  here::here("R/00_Config_file.R"))
+  here::here("R/00_Config_file.R")
+)
 
 RFossilpol::util_output_message(
-  msg = "Saving all Chronology models as figures")
+  msg = "Saving all Chronology models as figures"
+)
 
 
 #----------------------------------------------------------#
@@ -39,4 +41,4 @@ RFossilpol::chron_save_ad_figures(
   image_units = image_units, # [config_criteria]
   text_size = text_size, # [config_criteria]
   line_size = line_size # [config_criteria]
-  )
+)

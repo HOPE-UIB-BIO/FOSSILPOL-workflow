@@ -1,18 +1,18 @@
 #----------------------------------------------------------#
 #
 #
-#                 The FOSSILPOL workflow 
+#                 The FOSSILPOL workflow
 #
 #       Merge chronology outputs, and sort data
-#               
-#                 
 #
-#   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon 
+#
+#
+#   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
 #                         2021
 #
 #----------------------------------------------------------#
 
-# Load newest Chronology output and join with sorted data. 
+# Load newest Chronology output and join with sorted data.
 #   Do check of order of levels between levels, and raw_counts
 
 
@@ -24,10 +24,12 @@ library(here)
 
 # Load configuration
 source(
-  here::here("R/00_Config_file.R"))
+  here::here("R/00_Config_file.R")
+)
 
 RFossilpol::util_output_message(
-  msg = "Loading Chronology outputs and merged data")
+  msg = "Loading Chronology outputs and merged data"
+)
 
 
 #----------------------------------------------------------#
@@ -36,7 +38,7 @@ RFossilpol::util_output_message(
 
 data_with_chronologies <-
   RFossilpol::chron_merge_results(
-    dir = data_storage_path #[config_criteria]
+    dir = data_storage_path # [config_criteria]
   )
 
 
@@ -47,5 +49,7 @@ data_with_chronologies <-
 RFossilpol::util_save_if_latests(
   file_name = "data_with_chronologies",
   dir = paste0(
-    data_storage_path, #[config_criteria]
-    "/Data/Processed/Data_with_chronologies"))
+    data_storage_path, # [config_criteria]
+    "/Data/Processed/Data_with_chronologies"
+  )
+)
