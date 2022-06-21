@@ -1,12 +1,12 @@
 #----------------------------------------------------------#
 #
 #
-#                 The FOSSILPOL workflow 
+#                 The FOSSILPOL workflow
 #
 #             Produce the final data assembly
-#                 
 #
-#   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon 
+#
+#   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
 #                         2021
 #
 #----------------------------------------------------------#
@@ -22,7 +22,8 @@ library(here)
 
 # Load configuration
 source(
-  here::here("R/00_Config_file.R"))
+  here::here("R/00_Config_file.R")
+)
 
 # set the current environment
 current_env <- rlang::current_env()
@@ -32,16 +33,20 @@ current_env <- rlang::current_env()
 # 2. Load data  -----
 #----------------------------------------------------------#
 
-data_filtered <- 
+data_filtered <-
   RFossilpol::util_load_latest_file(
     file_name = "data_filtered",
-    dir = paste0(data_storage_path, #[config_criteria]
-                 "/Data/Processed/Data_filtered/"))
+    dir = paste0(
+      data_storage_path, # [config_criteria]
+      "/Data/Processed/Data_filtered/"
+    )
+  )
 
 # test the presence of data
 RFossilpol::util_check_if_loaded(
   file_name = "data_filtered",
-  env = current_env)
+  env = current_env
+)
 
 
 #----------------------------------------------------------#
@@ -50,11 +55,9 @@ RFossilpol::util_check_if_loaded(
 
 RFossilpol::proc_save_assembly(
   data_source = data_filtered,
-  user_sel_variables = c("long", "lat"), # [USER] Here can user variables, 
+  user_sel_variables = c("long", "lat"), # [USER] Here can user variables,
   # which have to be present in the  final data assembly (other can be selected
   # interactively, if `select_final_variables` == TRUE)
-  select_final_variables = select_final_variables, #[config_criteria]
-  dir = data_storage_path #[config_criteria]
+  select_final_variables = select_final_variables, # [config_criteria]
+  dir = data_storage_path # [config_criteria]
 )
-
-

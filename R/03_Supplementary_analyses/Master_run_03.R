@@ -4,16 +4,16 @@
 #                       Project name
 #
 #        Source all code for supplementary analyses
-#                 
 #
-#                         Names 
+#
+#                         Names
 #                         Year
 #
 #----------------------------------------------------------#
 
-# Sources all or selected processing steps in the folder of 
+# Sources all or selected processing steps in the folder of
 # `02_Supplementary analyses`. These analyses are meant for output produced
-# during the process of data handling and analyses that are important enough 
+# during the process of data handling and analyses that are important enough
 # to be save but not the main analyses performed. Examples are data checking
 # coding, temporal figures, etc
 
@@ -22,17 +22,19 @@
 # 1. Set up run -----
 #----------------------------------------------------------#
 
-rm(list = ls())
+library(here)
 
 # Load configuration
-source("R/00_Config_file.R")
+source(
+  here::here("R/00_Config_file.R")
+)
 
 
 #----------------------------------------------------------#
 # 2. Run individual parts -----
 #----------------------------------------------------------#
 
-working_dir <- 
+working_dir <-
   here::here(current_dir, "R/03_Supplementary_analyses/")
 
 # examples

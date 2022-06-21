@@ -1,12 +1,12 @@
 #----------------------------------------------------------#
 #
 #
-#                 The FOSSILPOL workflow 
+#                 The FOSSILPOL workflow
 #
 #                     Project setup
-#                 
 #
-#   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon 
+#
+#   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
 #                         2021
 #
 #----------------------------------------------------------#
@@ -20,7 +20,7 @@
 #----------------------------------------------------------#
 
 # list of all CRAN packages
-package_list <- 
+package_list <-
   c(
     "assertthat",
     "Bchron",
@@ -30,7 +30,7 @@ package_list <-
     "future",
     "ggplot2",
     "grDevices",
-    "here",      
+    "here",
     "httr",
     "IntCal",
     "janitor",
@@ -55,20 +55,19 @@ package_list <-
     "utils"
   )
 
-
-
 # define helper function
-install_packages <- 
+install_packages <-
   function(pkgs_list) {
-    
+
     # install all packages in the lst from CRAN
     sapply(pkgs_list, utils::install.packages, character.only = TRUE)
-    
+
     # install RFossilpol from GitHub
     devtools::install_github(
       "HOPE-UIB-BIO/R-Fossilpol-package",
       quiet = FALSE,
-      upgrade = FALSE)
+      upgrade = FALSE
+    )
   }
 
 
@@ -109,7 +108,7 @@ install_packages(package_list)
 
 
 #----------------------------------------------------------#
-# Step 6: Synchronize package versions with the project 
+# Step 6: Synchronize package versions with the project
 #----------------------------------------------------------#
 
 library(here)
@@ -121,10 +120,10 @@ if
 ) {
   renv::snapshot(lockfile = here::here("renv/library_list.lock"))
 } else {
-  renv::restore(lockfile = here::here("renv/library_list.lock"))  
+  renv::restore(lockfile = here::here("renv/library_list.lock"))
 }
 
 
 #----------------------------------------------------------#
-# Step 7: Run the project 
+# Step 7: Run the project
 #----------------------------------------------------------#

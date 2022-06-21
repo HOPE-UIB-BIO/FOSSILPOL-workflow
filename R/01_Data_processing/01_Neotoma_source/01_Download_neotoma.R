@@ -1,13 +1,13 @@
 #----------------------------------------------------------#
 #
 #
-#                 The FOSSILPOL workflow 
+#                 The FOSSILPOL workflow
 #
-#         Download pollen database from Neotoma 
-#                       
-#                 
+#         Download pollen database from Neotoma
 #
-#   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon 
+#
+#
+#   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
 #                         2021
 #
 #----------------------------------------------------------#
@@ -22,24 +22,26 @@ library(here)
 
 # Load configuration
 source(
-  here::here("R/00_Config_file.R"))
+  here::here("R/00_Config_file.R")
+)
 
 RFossilpol::util_output_message(
-  msg = "Start to download Neotoma files")
+  msg = "Start to download Neotoma files"
+)
 
 
 #----------------------------------------------------------#
 # 2. Download the Neotoma pollen database -----
 #----------------------------------------------------------#
 
-allds <- 
+allds <-
   RFossilpol::proc_neo_get_all_neotoma_datasets(
-    dataset_type, #[config_criteria]
-    long_min, #[config_criteria]
-    long_max, #[config_criteria]
-    lat_min, #[config_criteria]
-    lat_max #[config_criteria]
-  ) 
+    dataset_type, # [config_criteria]
+    long_min, # [config_criteria]
+    long_max, # [config_criteria]
+    lat_min, # [config_criteria]
+    lat_max # [config_criteria]
+  )
 
 # Download all sequences
 neotoma_download <-
@@ -51,10 +53,14 @@ neotoma_download <-
 #----------------------------------------------------------#
 
 RFossilpol::util_output_comment(
-  msg = "Saving 'neotoma_download'")
+  msg = "Saving 'neotoma_download'"
+)
 
 RFossilpol::util_save_if_latests(
   file_name = "neotoma_download",
-  dir = paste0(data_storage_path, #[config_criteria]
-               "/Data/Input/Neotoma_download"),
-  prefered_format = "rds")
+  dir = paste0(
+    data_storage_path, # [config_criteria]
+    "/Data/Input/Neotoma_download"
+  ),
+  prefered_format = "rds"
+)
