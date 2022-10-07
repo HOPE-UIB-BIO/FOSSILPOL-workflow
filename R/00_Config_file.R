@@ -17,7 +17,7 @@
 
 # Version of the Workflow
 workflow_version <-
-  "0.0.1"
+  "0.0.2"
 
 # set the current environment
 current_env <- environment()
@@ -26,28 +26,24 @@ current_env <- environment()
 # 1. Load packages -----
 #----------------------------------------------------------#
 
-if
-(
+if (
   !exists("update_repo_packages", envir = current_env)
 ) {
   update_repo_packages <- TRUE
 }
 
-if
-(
+if (
   update_repo_packages == TRUE
 ) {
 
   # install RFossilpol from github
-  if
-  (
+  if (
     !exists("already_installed_RFossilpol", envir = current_env)
   ) {
     already_installed_RFossilpol <- FALSE
   }
 
-  if
-  (
+  if (
     already_installed_RFossilpol == FALSE
   ) {
     devtools::install_github("HOPE-UIB-BIO/R-Fossilpol-package",
@@ -57,15 +53,13 @@ if
     already_installed_RFossilpol <- TRUE
   }
 
-  if
-  (
+  if (
     !exists("already_synch", envir = current_env)
   ) {
     already_synch <- FALSE
   }
 
-  if
-  (
+  if (
     already_synch == FALSE) {
     library(here)
     # synchronise the package versions
@@ -139,8 +133,7 @@ RFossilpol::util_make_datastorage_folders(
 #--------------------------------------------------#
 
 # check the presence of dataset database and create it if necessary
-if
-(
+if (
   FALSE ==
     "project_dataset_database.rds" %in%
       list.files(
