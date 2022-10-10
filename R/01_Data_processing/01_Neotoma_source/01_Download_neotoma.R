@@ -40,27 +40,20 @@ allds <-
     long_min, # [config_criteria]
     long_max, # [config_criteria]
     lat_min, # [config_criteria]
-    lat_max # [config_criteria]
+    lat_max, # [config_criteria]
+    loc = NULL # [USER]
   )
 
-# Download all sequences
+
+#----------------------------------------------------------#
+# 2. Download sequences -----
+#----------------------------------------------------------#
+
 neotoma_download <-
-  RFossilpol::proc_neo_download_sequences(allds)
-
-
-#----------------------------------------------------------#
-# 2. Save the Neotoma pollen database -----
-#----------------------------------------------------------#
-
-RFossilpol::util_output_comment(
-  msg = "Saving 'neotoma_download'"
-)
-
-RFossilpol::util_save_if_latests(
-  file_name = "neotoma_download",
-  dir = paste0(
-    data_storage_path, # [config_criteria]
-    "/Data/Input/Neotoma_download"
-  ),
-  prefered_format = "rds"
-)
+  RFossilpol::proc_neo_download_sequences(
+    allds = allds,
+    dir = paste0(
+      data_storage_path, # [config_criteria]
+      "/Data/Input/Neotoma_download"
+    )
+  )
