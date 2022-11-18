@@ -57,7 +57,7 @@ RUtilpol::output_comment(
 )
 
 RUtilpol::save_latest_file(
-  file_to_save = neotoma_download,
+  object_to_save = neotoma_download,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Input/Neotoma_download"

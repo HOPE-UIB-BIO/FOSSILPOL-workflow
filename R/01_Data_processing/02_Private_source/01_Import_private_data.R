@@ -87,7 +87,7 @@ RUtilpol::output_heading(
 )
 
 RUtilpol::save_latest_file(
-  file_to_save = private_data_prepared,
+  object_to_save = private_data_prepared,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Processed/Private"

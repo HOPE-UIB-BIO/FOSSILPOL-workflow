@@ -164,7 +164,7 @@ RUtilpol::output_comment(
 )
 
 RUtilpol::save_latest_file(
-  file_to_save = data_merged,
+  object_to_save = data_merged,
   dir = paste0(
     data_storage_path, # [config criteria]
     "/Data/Processed/Data_merged"

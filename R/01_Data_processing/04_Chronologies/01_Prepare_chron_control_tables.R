@@ -117,7 +117,7 @@ chron_tables_prepared <-
 #----------------------------------------------------------#
 
 RUtilpol::save_latest_file(
-  file_to_save = chron_tables_prepared,
+  object_to_save = chron_tables_prepared,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Processed/Chronology/Chron_tables_prepared"
