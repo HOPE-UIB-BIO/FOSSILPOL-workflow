@@ -26,7 +26,7 @@ source(
   here::here("R/00_Config_file.R")
 )
 
-RFossilpol::util_output_message(
+RUtilpol::output_heading(
   msg = "Joining result of AD and predict ages for individual levels"
 )
 

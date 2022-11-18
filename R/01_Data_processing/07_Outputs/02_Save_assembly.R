@@ -34,7 +34,7 @@ current_env <- rlang::current_env()
 #----------------------------------------------------------#
 
 data_filtered <-
-  RFossilpol::util_load_latest_file(
+  RUtilpol::get_latest_file(
     file_name = "data_filtered",
     dir = paste0(
       data_storage_path, # [config_criteria]
@@ -43,7 +43,7 @@ data_filtered <-
   )
 
 # test the presence of data
-RFossilpol::util_check_if_loaded(
+RUtilpol::check_if_loaded(
   file_name = "data_filtered",
   env = current_env
 )

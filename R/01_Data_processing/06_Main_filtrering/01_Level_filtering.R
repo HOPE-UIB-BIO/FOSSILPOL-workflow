@@ -29,7 +29,7 @@ source(
 # set the current environment
 current_env <- rlang::current_env()
 
-RFossilpol::util_output_message(
+RUtilpol::output_heading(
   msg = "Start of process of sequence filtration"
 )
 
@@ -39,7 +39,7 @@ RFossilpol::util_output_message(
 #----------------------------------------------------------#
 
 data_harmonised <-
-  RFossilpol::util_load_latest_file(
+  RUtilpol::get_latest_file(
     file_name = "data_harmonised",
     dir = paste0(
       data_storage_path, # [config_criteria]
@@ -49,7 +49,7 @@ data_harmonised <-
 
 
 # test the presence of data
-RFossilpol::util_check_if_loaded(
+RUtilpol::check_if_loaded(
   file_name = "data_harmonised",
   env = current_env
 )
@@ -96,10 +96,12 @@ data_filtered <-
 # 3. Save   -----
 #----------------------------------------------------------#
 
-RFossilpol::util_save_if_latests(
-  file_name = "data_filtered",
+RUtilpol::save_latest_file(
+  file_to_save = data_filtered,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Processed/Data_filtered/"
-  )
+  ),
+  prefered_format = "rds",
+  use_sha = TRUE
 )
