@@ -27,7 +27,7 @@ source(
   here::here("R/00_Config_file.R")
 )
 
-RFossilpol::util_output_message(
+RUtilpol::output_heading(
   msg = "Loading Chronology outputs and merged data"
 )
 
@@ -46,10 +46,12 @@ data_with_chronologies <-
 # 4. Save the data  -----
 #----------------------------------------------------------#
 
-RFossilpol::util_save_if_latests(
-  file_name = "data_with_chronologies",
+RUtilpol::save_latest_file(
+  file_to_save = data_with_chronologies,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Processed/Data_with_chronologies"
-  )
+  ),
+  prefered_format = "rds",
+  use_sha = TRUE
 )

@@ -36,21 +36,38 @@ if (
   update_repo_packages == TRUE
 ) {
 
-  # install RFossilpol from github
+  # install RUtilpol from github
   if (
-    !exists("already_installed_RFossilpol", envir = current_env)
+    !exists("already_installed_rutilpol")
   ) {
-    already_installed_RFossilpol <- FALSE
+    already_installed_rutilpol <- FALSE
   }
 
   if (
-    already_installed_RFossilpol == FALSE
+    already_installed_rutilpol == FALSE
+  ) {
+    devtools::install_github("HOPE-UIB-BIO/R-Utilpol-package",
+      quiet = FALSE,
+      upgrade = FALSE
+    )
+    already_installed_rutilpol <- TRUE
+  }
+
+  # install RFossilpol from github
+  if (
+    !exists("already_installed_rfossilpol", envir = current_env)
+  ) {
+    already_installed_rfossilpol <- FALSE
+  }
+
+  if (
+    already_installed_rfossilpol == FALSE
   ) {
     devtools::install_github("HOPE-UIB-BIO/R-Fossilpol-package",
       quiet = FALSE,
       upgrade = FALSE
     )
-    already_installed_RFossilpol <- TRUE
+    already_installed_rfossilpol <- TRUE
   }
 
   if (
@@ -77,6 +94,7 @@ package_list <-
     "devtools",
     "Bchron",
     "RFossilpol",
+    "RUtilpol",
     "here",
     "tidyverse"
   )

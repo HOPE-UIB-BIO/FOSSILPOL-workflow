@@ -27,7 +27,7 @@ source(
   )
 )
 
-RFossilpol::util_output_message(
+RUtilpol::output_heading(
   msg = "Starting combining private data sources"
 )
 
@@ -81,15 +81,17 @@ private_data_prepared <-
 # 4. Save the tibble of the combined private datasets  -----
 #----------------------------------------------------------#
 
-RFossilpol::util_output_message(
-  msg = "Saving 'private_data_prepared'"
+RUtilpol::output_heading(
+  msg = "Saving 'private_data_prepared'",
+  size = "h2"
 )
 
-RFossilpol::util_save_if_latests(
-  file_name = "private_data_prepared",
+RUtilpol::save_latest_file(
+  file_to_save = private_data_prepared,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Processed/Private"
   ),
-  prefered_format = "rds"
+  prefered_format = "rds",
+  use_sha = TRUE
 )

@@ -63,7 +63,7 @@ chron_output <-
 # 4. Save the data  -----
 #----------------------------------------------------------#
 
-RFossilpol::util_output_comment(
+RUtilpol::output_comment(
   msg = "Saving temporary file. This can take time."
 )
 

@@ -28,7 +28,7 @@ source(
 # set the current environment
 current_env <- rlang::current_env()
 
-RFossilpol::util_output_message(
+RUtilpol::output_heading(
   msg = "Starting processing levels"
 )
 
@@ -38,12 +38,12 @@ RFossilpol::util_output_message(
 #----------------------------------------------------------#
 
 # load the data
-RFossilpol::util_output_comment(
+RUtilpol::output_comment(
   msg = "Loading Neotoma chron control file"
 )
 
 neotoma_meta_chron_control <-
-  RFossilpol::util_load_latest_file(
+  RUtilpol::get_latest_file(
     file_name = "neotoma_meta_chron_control",
     dir = paste0(
       data_storage_path, # [config_criteria]
@@ -52,7 +52,7 @@ neotoma_meta_chron_control <-
   )
 
 # test the presence of data
-RFossilpol::util_check_if_loaded(
+RUtilpol::check_if_loaded(
   file_name = "neotoma_meta_chron_control",
   env = current_env
 )
@@ -68,11 +68,12 @@ neotoma_sites_sample_depth <-
 # 2. Raw counts and ecological groups  -----
 #----------------------------------------------------------#
 
-RFossilpol::util_output_message(
-  msg = "Preparing selection of ecological groups"
+RUtilpol::output_heading(
+  msg = "Preparing selection of ecological groups",
+  size = "h2"
 )
 
-RFossilpol::util_output_comment(
+RUtilpol::output_comment(
   msg = paste(
     "For the explannation of ecological groups aberrations, please see\n",
     "'Technical guide to FOSSILPOL: The workflow to process",
@@ -99,15 +100,17 @@ neotoma_processed <-
 # 4. Save the data  -----
 #----------------------------------------------------------#
 
-RFossilpol::util_output_message(
-  msg = "Saving 'neotoma_processed'"
+RUtilpol::output_heading(
+  msg = "Saving 'neotoma_processed'",
+  size = "h2"
 )
 
-RFossilpol::util_save_if_latests(
-  file_name = "neotoma_processed",
+RUtilpol::save_latest_file(
+  file_to_save = neotoma_processed,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Processed/Neotoma_processed"
   ),
-  prefered_format = "rds"
+  prefered_format = "rds",
+  use_sha = TRUE
 )

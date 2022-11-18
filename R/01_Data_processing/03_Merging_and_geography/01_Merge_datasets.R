@@ -159,15 +159,16 @@ data_merged <-
 # 13. Save -----
 #----------------------------------------------------------#
 
-RFossilpol::util_output_comment(
+RUtilpol::output_comment(
   msg = "Saving the data"
 )
 
-RFossilpol::util_save_if_latests(
-  file_name = "data_merged",
+RUtilpol::save_latest_file(
+  file_to_save = data_merged,
   dir = paste0(
     data_storage_path, # [config criteria]
     "/Data/Processed/Data_merged"
   ),
-  prefered_format = "rds"
+  prefered_format = "rds",
+  use_sha = TRUE
 )

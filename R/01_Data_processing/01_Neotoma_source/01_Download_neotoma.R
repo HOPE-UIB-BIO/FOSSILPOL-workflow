@@ -25,7 +25,7 @@ source(
   here::here("R/00_Config_file.R")
 )
 
-RFossilpol::util_output_message(
+RUtilpol::output_heading(
   msg = "Start to download Neotoma files"
 )
 
@@ -52,15 +52,16 @@ neotoma_download <-
 # 2. Save the Neotoma pollen database -----
 #----------------------------------------------------------#
 
-RFossilpol::util_output_comment(
+RUtilpol::output_comment(
   msg = "Saving 'neotoma_download'"
 )
 
-RFossilpol::util_save_if_latests(
-  file_name = "neotoma_download",
+RUtilpol::save_latest_file(
+  file_to_save = neotoma_download,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Input/Neotoma_download"
   ),
-  prefered_format = "rds"
+  prefered_format = "rds",
+  use_sha = TRUE
 )

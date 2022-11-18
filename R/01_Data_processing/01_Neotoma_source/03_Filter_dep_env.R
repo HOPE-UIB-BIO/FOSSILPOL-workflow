@@ -27,7 +27,7 @@ source(
 # set the current environment
 current_env <- rlang::current_env()
 
-RFossilpol::util_output_message(
+RUtilpol::output_heading(
   msg = "Starting processing depositional environment"
 )
 
@@ -37,7 +37,7 @@ RFossilpol::util_output_message(
 
 # load the data
 neotoma_meta_samples <-
-  RFossilpol::util_load_latest_file(
+  RUtilpol::get_latest_file(
     file_name = "neotoma_meta_samples",
     dir = paste0(
       data_storage_path, # [config_criteria]
@@ -46,7 +46,7 @@ neotoma_meta_samples <-
   )
 
 # test the presence of data
-RFossilpol::util_check_if_loaded(
+RUtilpol::check_if_loaded(
   file_name = "neotoma_meta_samples",
   env = current_env
 )
@@ -67,15 +67,16 @@ neotoma_meta_samples_dep_envt_filtered <-
 # 4. Save the data  -----
 #----------------------------------------------------------#
 
-RFossilpol::util_output_comment(
+RUtilpol::output_comment(
   msg = "Saving"
 )
 
-RFossilpol::util_save_if_latests(
-  file_name = "neotoma_meta_samples_dep_envt_filtered",
+RUtilpol::save_latest_file(
+  file_to_save = neotoma_meta_samples_dep_envt_filtered,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Processed/Neotoma_processed/Neotoma_dep_env"
   ),
-  prefered_format = "rds"
+  prefered_format = "rds",
+  use_sha = TRUE
 )
