@@ -84,7 +84,7 @@ data_harmonised <-
 #----------------------------------------------------------#
 
 RUtilpol::save_latest_file(
-  file_to_save = data_harmonised,
+  object_to_save = data_harmonised,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Processed/Data_harmonised"

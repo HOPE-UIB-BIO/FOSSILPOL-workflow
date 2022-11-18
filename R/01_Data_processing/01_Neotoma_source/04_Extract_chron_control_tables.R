@@ -107,7 +107,7 @@ RUtilpol::output_comment(
 )
 
 RUtilpol::save_latest_file(
-  file_to_save = neotoma_meta_chron_control,
+  object_to_save = neotoma_meta_chron_control,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Processed/Neotoma_processed/Neotoma_chron_control"

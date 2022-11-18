@@ -47,7 +47,7 @@ data_with_chronologies <-
 #----------------------------------------------------------#
 
 RUtilpol::save_latest_file(
-  file_to_save = data_with_chronologies,
+  object_to_save = data_with_chronologies,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Processed/Data_with_chronologies"

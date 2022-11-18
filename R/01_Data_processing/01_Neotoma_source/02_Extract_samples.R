@@ -105,7 +105,7 @@ RUtilpol::output_comment(
 )
 
 RUtilpol::save_latest_file(
-  file_to_save = neotoma_meta_samples,
+  object_to_save = neotoma_meta_samples,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Processed/Neotoma_processed/Neotoma_meta"
