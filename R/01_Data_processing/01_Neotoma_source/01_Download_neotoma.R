@@ -31,7 +31,7 @@ RFossilpol::util_output_message(
 
 
 #----------------------------------------------------------#
-# 2. Download the Neotoma pollen database -----
+# 2. Get sequences from Neotoma pollen database -----
 #----------------------------------------------------------#
 
 allds <-
@@ -57,3 +57,21 @@ neotoma_download <-
       "/Data/Input/Neotoma_download"
     )
   )
+
+#----------------------------------------------------------#
+# 3. Save -----
+#----------------------------------------------------------#
+
+RUtilpol::output_comment(
+  msg = "Saving 'neotoma_download'"
+)
+
+RUtilpol::save_latest_file(
+  object_to_save = neotoma_download,
+  dir = paste0(
+    data_storage_path, # [config_criteria]
+    "/Data/Input/Neotoma_download"
+  ),
+  prefered_format = "rds",
+  use_sha = TRUE
+)
