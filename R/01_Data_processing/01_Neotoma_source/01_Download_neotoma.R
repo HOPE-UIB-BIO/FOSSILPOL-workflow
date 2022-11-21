@@ -31,7 +31,7 @@ RUtilpol::output_heading(
 
 
 #----------------------------------------------------------#
-# 2. Download the Neotoma pollen database -----
+# 2. Get sequences from Neotoma pollen database -----
 #----------------------------------------------------------#
 
 allds <-
@@ -40,16 +40,26 @@ allds <-
     long_min, # [config_criteria]
     long_max, # [config_criteria]
     lat_min, # [config_criteria]
-    lat_max # [config_criteria]
+    lat_max, # [config_criteria]
+    loc = NULL # [USER]
   )
-
-# Download all sequences
-neotoma_download <-
-  RFossilpol::proc_neo_download_sequences(allds)
 
 
 #----------------------------------------------------------#
-# 2. Save the Neotoma pollen database -----
+# 2. Download sequences -----
+#----------------------------------------------------------#
+
+neotoma_download <-
+  RFossilpol::proc_neo_download_sequences(
+    allds = allds,
+    dir = paste0(
+      data_storage_path, # [config_criteria]
+      "/Data/Input/Neotoma_download"
+    )
+  )
+
+#----------------------------------------------------------#
+# 3. Save -----
 #----------------------------------------------------------#
 
 RUtilpol::output_comment(
