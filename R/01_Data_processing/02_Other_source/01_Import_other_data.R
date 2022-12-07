@@ -3,7 +3,7 @@
 #
 #                 The FOSSILPOL workflow
 #
-#                 Extract private data
+#                 Extract other data
 #
 #
 #   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
@@ -11,7 +11,7 @@
 #
 #----------------------------------------------------------#
 
-#  Source private data and filter the sequences in a way that they
+#  Source other data and filter the sequences in a way that they
 #   are comparable with Neotoma
 
 #----------------------------------------------------------#
@@ -28,45 +28,45 @@ source(
 )
 
 RUtilpol::output_heading(
-  msg = "Starting combining private data sources"
+  msg = "Starting combining other data sources"
 )
 
 
 #----------------------------------------------------------#
-# 2. Load and private datasets  -----
+# 2. Load and other datasets  -----
 #----------------------------------------------------------#
 
-# load all private dataset
-# load all private dataset
-private_data_assembly <-
+# load all other dataset
+# load all other dataset
+other_data_assembly <-
   RFossilpol::import_datasets_from_folder(
-    # path to the folder with private datasets in .xlsx format (prepared using
+    # path to the folder with other datasets in .xlsx format (prepared using
     #   the template provided)
     dir_files = paste0(
       data_storage_path, # [config_criteria]
-      "/Data/Input/Private/"
+      "/Data/Input/Other/"
     ), # [USER]
     dir = data_storage_path, # [config_criteria]
-    suffix = "private"
+    suffix = "other"
   ) %>% # [USER] user can specify the suffix of the data
   # e.g. the region or source of data
   dplyr::mutate(
     source_of_data = "personal_data",
-    data_publicity = "private",
+    data_publicity = "restricted",
     pollen_percentage = FALSE
   )
 
 # alternatively user can specify direction to the .rds file
-# private_data_assembly <-
+# other_data_assembly <-
 #   c()
 
 #----------------------------------------------------------#
-# 3. Process private datasets  -----
+# 3. Process other datasets  -----
 #----------------------------------------------------------#
 
-private_data_prepared <-
+other_data_prepared <-
   RFossilpol::proc_priv_prepare(
-    private_data_assembly,
+    other_data_assembly,
     data_storage_path, # [config_criteria]
     min_n_levels, # [config_criteria]
     long_min, # [config_criteria]
@@ -78,19 +78,19 @@ private_data_prepared <-
   )
 
 #----------------------------------------------------------#
-# 4. Save the tibble of the combined private datasets  -----
+# 4. Save the tibble of the combined other datasets  -----
 #----------------------------------------------------------#
 
 RUtilpol::output_heading(
-  msg = "Saving 'private_data_prepared'",
+  msg = "Saving 'other_data_prepared'",
   size = "h2"
 )
 
 RUtilpol::save_latest_file(
-  object_to_save = private_data_prepared,
+  object_to_save = other_data_prepared,
   dir = paste0(
     data_storage_path, # [config_criteria]
-    "/Data/Processed/Private"
+    "/Data/Processed/Other"
   ),
   prefered_format = "rds",
   use_sha = TRUE
