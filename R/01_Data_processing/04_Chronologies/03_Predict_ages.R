@@ -37,48 +37,32 @@ sites_to_rerun <- c()
 # 2. Load data to predict -----
 #----------------------------------------------------------#
 
-# load latest data with Chronology re-calibration
-chron_output <-
-  readr::read_rds(
-    paste0(
+# load data
+data_merged <-
+  RUtilpol::get_latest_file(
+    file_name = "data_merged",
+    dir = paste0(
       data_storage_path, # [config_criteria]
-      "/Data/Processed/Chronology/Temporary_output/chron_output.rds"
+      "/Data/Processed/Data_merged"
     )
   )
 
+# test the presence of data
+RUtilpol::check_if_loaded(
+  file_name = "data_merged",
+  env = current_env
+)
 
 #----------------------------------------------------------#
-# 3. Prepare the data based on the previous results -----
-#----------------------------------------------------------#
-
-# check the current state and setting of chronology
-current_state <-
-  RFossilpol::chron_get_current_state(
-    dir = data_storage_path, # [config_criteria]
-    calc_AD_models_denovo = calc_AD_models_denovo,
-    predict_ages_denovo = predict_ages_denovo
-  )
-
-# get the data to be predicted based on the current chronology result and
-#   the current state and setting of chronology
-data_to_predict <-
-  RFossilpol::chron_prepare_ad_to_predict(
-    data_source = chron_output,
-    sites_to_rerun = sites_to_rerun,
-    dir = data_storage_path, # [config_criteria]
-    current_state = current_state
-  )
-
-
-#----------------------------------------------------------#
-# 4.  Predicted new ages for each dataset  -----
+# 3.  Predicted new ages for each dataset  -----
 #----------------------------------------------------------#
 
 predicted_ages <-
   RFossilpol::chron_predict_all_ages(
     data_source = data_to_predict,
     dir = data_storage_path, # [config_criteria]
-    date = current_date # [config_criteria]
+    predict_ages_denovo = predict_ages_denovo, # [config_criteria]
+    sites_to_rerun = sites_to_rerun
   )
 
 
@@ -86,10 +70,12 @@ predicted_ages <-
 # 4. Save the data  -----
 #----------------------------------------------------------#
 
-RFossilpol::chron_save_results(
-  data_source_predicted_ages = predicted_ages,
-  data_source_to_predict = data_to_predict,
-  current_state = current_state,
-  sites_to_rerun = sites_to_rerun,
-  dir = data_storage_path # [config_criteria]
+RUtilpol::save_latest_file(
+  object_to_save = predicted_ages,
+  dir = paste0(
+    data_storage_path, # [config_criteria]
+    "/Data/Processed/Chronology/Predicted_ages"
+  ),
+  prefered_format = "rds",
+  use_sha = TRUE
 )

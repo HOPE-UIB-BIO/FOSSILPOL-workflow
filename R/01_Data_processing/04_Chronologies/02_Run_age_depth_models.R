@@ -40,38 +40,19 @@ full_chron_table <-
 # 3.  Run age-depth modelling  -----
 #----------------------------------------------------------#
 
-chron_output <-
-  RFossilpol::chron_recalibrate_ad_models(
-    data_source = full_chron_table,
-    batch_size = batch_size, # [config_criteria]
-    number_of_cores = number_of_cores, # [config_criteria]
-    default_iteration = default_iteration, # [config_criteria]
-    default_burn = default_burn, # [config_criteria]
-    default_thin = default_thin, # [config_criteria]
-    iteration_multiplier = iteration_multiplier, # [config_criteria]
-    set_seed = set_seed, # [config_criteria]
-    dir = data_storage_path, # [config_criteria]
-    batch_attempts = 3, # [USER] Number of tries each batch should be considered
-    # before skipping it
-    time_per_sequence = 200 # [USER] Maximum time dedicated to estimation of a
-    # single sequence. User can increase this if a sequences is being skipped
-    # before finishing estimation.
-  )
-
-
-#----------------------------------------------------------#
-# 4. Save the data  -----
-#----------------------------------------------------------#
-
-RUtilpol::output_comment(
-  msg = "Saving temporary file. This can take time."
-)
-
-readr::write_rds(
-  chron_output,
-  paste0(
-    data_storage_path, # [config_criteria]
-    "/Data/Processed/Chronology/Temporary_output/chron_output.rds"
-  ),
-  compress = "gz"
+RFossilpol::chron_recalibrate_ad_models(
+  data_source = full_chron_table,
+  batch_size = batch_size, # [config_criteria]
+  number_of_cores = number_of_cores, # [config_criteria]
+  default_iteration = default_iteration, # [config_criteria]
+  default_burn = default_burn, # [config_criteria]
+  default_thin = default_thin, # [config_criteria]
+  iteration_multiplier = iteration_multiplier, # [config_criteria]
+  set_seed = set_seed, # [config_criteria]
+  dir = data_storage_path, # [config_criteria]
+  batch_attempts = 3, # [USER] Number of tries each batch should be considered
+  # before skipping it
+  time_per_sequence = 200 # [USER] Maximum time dedicated to estimation of a
+  # single sequence. User can increase this if a sequences is being skipped
+  # before finishing estimation.
 )

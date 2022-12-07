@@ -38,8 +38,7 @@ working_dir <-
   )
 
 # run if selected in Config file
-if
-(
+if (
   recalib_AD_models == TRUE
 ) { # [config_criteria]
 
@@ -57,8 +56,7 @@ if
     )
 
   # download data
-  if
-  (
+  if (
     run_ad_confirm == TRUE
   ) {
     source(
