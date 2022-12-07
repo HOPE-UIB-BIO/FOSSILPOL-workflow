@@ -12,7 +12,7 @@
 #----------------------------------------------------------#
 
 # - Load the newest version of processed datasets from Neotoma
-# and private sources.
+# and other sources.
 # - Detect site duplicates among datasets.
 # - Sort levels
 # - Assign values based on geography.
@@ -37,7 +37,7 @@ source(
 data_full <-
   RFossilpol::proc_get_merged_dataset(
     data_storage_path, # [config_criteria]
-    private_data
+    other_data
   )
 
 
@@ -45,10 +45,10 @@ data_full <-
 # 4. Detect duplicates  -----
 #----------------------------------------------------------#
 
-# test for potential duplicated sequences between private data and Neotoma
+# test for potential duplicated sequences between other data and Neotoma
 if
 (
-  detect_duplicates == TRUE && private_data == TRUE # [config_criteria]
+  detect_duplicates == TRUE && other_data == TRUE # [config_criteria]
 ) {
   data_full_filtered <-
     RFossilpol::proc_filter_out_duplicates(

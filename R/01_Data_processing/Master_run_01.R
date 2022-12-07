@@ -41,13 +41,13 @@ source(
 
 if
 (
-  private_data == TRUE
+  other_data == TRUE
 ) {
   source(
     paste0(
       current_dir,
       "/R/01_Data_processing/",
-      "02_Private_source/Run_01_02.R"
+      "02_Other_source/Run_01_02.R"
     )
   )
 }

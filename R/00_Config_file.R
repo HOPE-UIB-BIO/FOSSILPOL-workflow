@@ -200,8 +200,8 @@ alt_max <- NA # [USER]
 
 neotoma_new_download <- TRUE
 
-# define access to private datasets
-private_data <- FALSE # [USER]
+# define access to other datasets
+other_data <- FALSE # [USER]
 detect_duplicates <- TRUE # [USER]
 
 # Include/exclude age modelling in run
