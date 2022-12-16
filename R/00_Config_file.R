@@ -27,72 +27,30 @@ current_env <- environment()
 #----------------------------------------------------------#
 
 if (
-  !exists("update_repo_packages", envir = current_env)
+  isFALSE(
+    exists("already_synch", envir = current_env)
+  )
 ) {
-  update_repo_packages <- TRUE
+  already_synch <- FALSE
 }
 
 if (
-  update_repo_packages == TRUE
+  isFALSE(already_synch)
 ) {
+  library(here)
+  # synchronise the package versions
+  renv::restore(
+    lockfile = here::here("renv/library_list.lock")
+  )
+  already_synch <- TRUE
 
-  # install RUtilpol from github
-  if (
-    !exists("already_installed_rutilpol")
-  ) {
-    already_installed_rutilpol <- FALSE
-  }
-
-  if (
-    already_installed_rutilpol == FALSE
-  ) {
-    devtools::install_github("HOPE-UIB-BIO/R-Utilpol-package",
-      quiet = FALSE,
-      upgrade = FALSE
-    )
-    already_installed_rutilpol <- TRUE
-  }
-
-  # install RFossilpol from github
-  if (
-    !exists("already_installed_rfossilpol", envir = current_env)
-  ) {
-    already_installed_rfossilpol <- FALSE
-  }
-
-  if (
-    already_installed_rfossilpol == FALSE
-  ) {
-    devtools::install_github("HOPE-UIB-BIO/R-Fossilpol-package",
-      quiet = FALSE,
-      upgrade = FALSE
-    )
-    already_installed_rfossilpol <- TRUE
-  }
-
-  if (
-    !exists("already_synch", envir = current_env)
-  ) {
-    already_synch <- FALSE
-  }
-
-  if (
-    already_synch == FALSE) {
-    library(here)
-    # synchronise the package versions
-    renv::restore(lockfile = here::here("renv/library_list.lock"))
-    already_synch <- TRUE
-
-    # save snapshot of package versions
-    # renv::snapshot(lockfile =  "renv/library_list.lock")  # do only for update
-  }
+  # save snapshot of package versions
+  # renv::snapshot(lockfile =  "renv/library_list.lock")  # do only for update
 }
 
 # define packages
 package_list <-
   c(
-    "devtools",
-    "Bchron",
     "RFossilpol",
     "RUtilpol",
     "here",
