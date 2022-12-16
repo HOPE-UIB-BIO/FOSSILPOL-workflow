@@ -110,7 +110,7 @@ RFossilpol::util_make_datastorage_folders(
 
 # check the presence of dataset database and create it if necessary
 if (
-  FALSE ==
+  isFALSE(
     "project_dataset_database.rds" %in%
       list.files(
         paste0(
@@ -118,6 +118,7 @@ if (
           "/Data/Personal_database_storage"
         )
       )
+  )
 ) {
   project_dataset_database <-
     RFossilpol:::proj_db_class()
