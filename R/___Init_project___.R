@@ -24,7 +24,6 @@ package_list <-
   c(
     "assertthat",
     "Bchron",
-    "devtools",
     "dplyr",
     "furrr",
     "future",
@@ -41,6 +40,7 @@ package_list <-
     "R.utils",
     "rcarbon",
     "readr",
+    "remotes",
     "rioja",
     "rlang",
     "sf",
@@ -62,11 +62,19 @@ install_packages <-
     # install all packages in the lst from CRAN
     sapply(pkgs_list, utils::install.packages, character.only = TRUE)
 
-    # install RFossilpol from GitHub
-    devtools::install_github(
-      "HOPE-UIB-BIO/R-Fossilpol-package",
+    # install RUtilpol from GitHub
+    remotes::install_github(
+      repo = "HOPE-UIB-BIO/R-Utilpol-package",
+      ref = "HEAD",
       quiet = FALSE,
-      upgrade = FALSE
+      upgrade = "ask"
+    )
+
+    # install RFossilpol from GitHub
+    remotes::install_github(
+      repo = "HOPE-UIB-BIO/R-Fossilpol-package@*release",
+      quiet = FALSE,
+      upgrade = "ask"
     )
   }
 
@@ -114,13 +122,16 @@ install_packages(package_list)
 library(here)
 
 # if there is no lock file present make a new snapshot
-if
-(
+if (
   isFALSE("library_list.lock" %in% list.files(here::here("renv")))
 ) {
-  renv::snapshot(lockfile = here::here("renv/library_list.lock"))
+  renv::snapshot(
+    lockfile = here::here("renv/library_list.lock")
+  )
 } else {
-  renv::restore(lockfile = here::here("renv/library_list.lock"))
+  renv::restore(
+    lockfile = here::here("renv/library_list.lock")
+  )
 }
 
 
