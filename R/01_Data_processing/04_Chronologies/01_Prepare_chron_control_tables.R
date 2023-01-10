@@ -74,7 +74,7 @@ chron_control_tables <-
 #----------------------------------------------------------#
 
 chron_control_tables_subset <-
-  RFossilpol::chron_subset_previous_sequences(
+  RFossilpol::chron_subset_previous_records(
     data_source = chron_control_tables,
     dir = data_storage_path, # [config_criteria]
     rerun_ad = calc_AD_models_denovo, # [config_criteria]

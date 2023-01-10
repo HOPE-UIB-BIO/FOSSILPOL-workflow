@@ -225,7 +225,7 @@ iteration_multiplier <- 5 # [USER]
 # 5.6. Level filtering criteria  -----
 #--------------------------------------------------#
 
-# criteria to filter out levels and sequences
+# criteria to filter out levels and records
 
 #----------------------------------------#
 

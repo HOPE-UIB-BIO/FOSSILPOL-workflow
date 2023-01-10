@@ -13,7 +13,7 @@
 
 # Run all scripts in `/R/01_Data_processing/04_Chronologies/`
 #   Prepare chronology control tables, run Bchon, and predict age for selected
-#   sequences
+#   records
 
 #----------------------------------------------------------#
 # 1. Set up run -----

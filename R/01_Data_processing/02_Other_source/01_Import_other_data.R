@@ -11,7 +11,7 @@
 #
 #----------------------------------------------------------#
 
-#  Source other data and filter the sequences in a way that they
+#  Source other data and filter the records in a way that they
 #   are comparable with Neotoma
 
 #----------------------------------------------------------#

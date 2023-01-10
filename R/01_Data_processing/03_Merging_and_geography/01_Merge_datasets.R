@@ -45,7 +45,7 @@ data_full <-
 # 4. Detect duplicates  -----
 #----------------------------------------------------------#
 
-# test for potential duplicated sequences between other data and Neotoma
+# test for potential duplicated records between other data and Neotoma
 if
 (
   detect_duplicates == TRUE && other_data == TRUE # [config_criteria]
