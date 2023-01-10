@@ -12,8 +12,8 @@
 #----------------------------------------------------------#
 
 #  Run the Chronology age-depth models using parallel computing (batches).
-#   For batches, that do not successfully converge, run sequences individually
-#   (this include writing problematic sequences into `Crash_file`)
+#   For batches, that do not successfully converge, run records individually
+#   (this include writing problematic records into `Crash_file`)
 
 #----------------------------------------------------------#
 # 1. Set up  -----
@@ -52,7 +52,7 @@ RFossilpol::chron_recalibrate_ad_models(
   dir = data_storage_path, # [config_criteria]
   batch_attempts = 3, # [USER] Number of tries each batch should be considered
   # before skipping it
-  time_per_sequence = 200 # [USER] Maximum time dedicated to estimation of a
-  # single sequence. User can increase this if a sequences is being skipped
+  time_per_record = 200 # [USER] Maximum time dedicated to estimation of a
+  # single record. User can increase this if a records is being skipped
   # before finishing estimation.
 )

@@ -12,7 +12,7 @@
 #
 #----------------------------------------------------------#
 
-#  Download the pollen sequences from Neotoma API
+#  Download the pollen records from Neotoma API
 
 #----------------------------------------------------------#
 # 1. Set up  -----
@@ -31,7 +31,7 @@ RUtilpol::output_heading(
 
 
 #----------------------------------------------------------#
-# 2. Get sequences from Neotoma pollen database -----
+# 2. Get records from Neotoma pollen database -----
 #----------------------------------------------------------#
 
 allds <-
@@ -46,11 +46,11 @@ allds <-
 
 
 #----------------------------------------------------------#
-# 2. Download sequences -----
+# 2. Download records -----
 #----------------------------------------------------------#
 
 neotoma_download <-
-  RFossilpol::proc_neo_download_sequences(
+  RFossilpol::proc_neo_download_records(
     allds = allds,
     dir = paste0(
       data_storage_path, # [config_criteria]

@@ -11,7 +11,7 @@
 #
 #----------------------------------------------------------#
 
-# Save pollen diagrams for all sequences presented after filtration
+# Save pollen diagrams for all records presented after filtration
 
 
 #----------------------------------------------------------#

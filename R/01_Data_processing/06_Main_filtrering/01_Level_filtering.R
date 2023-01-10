@@ -11,7 +11,7 @@
 #
 #----------------------------------------------------------#
 
-#  Filter out levels and sequences based on several criteria selected in
+#  Filter out levels and records based on several criteria selected in
 #   Config File
 
 
@@ -30,7 +30,7 @@ source(
 current_env <- rlang::current_env()
 
 RUtilpol::output_heading(
-  msg = "Start of process of sequence filtration"
+  msg = "Start of process of record filtration"
 )
 
 
