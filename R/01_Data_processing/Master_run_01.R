@@ -39,8 +39,7 @@ source(
   )
 )
 
-if
-(
+if (
   other_data == TRUE
 ) {
   source(

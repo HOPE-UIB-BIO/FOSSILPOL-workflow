@@ -38,8 +38,7 @@ working_dir <-
   )
 
 # run if selected in Config file
-if
-(
+if (
   neotoma_new_download == TRUE
 ) {
   download_confirm <-
@@ -56,8 +55,7 @@ if
     )
 
   # download data
-  if
-  (
+  if (
     download_confirm == TRUE
   ) {
     source(
