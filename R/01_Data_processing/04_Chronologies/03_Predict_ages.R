@@ -59,7 +59,7 @@ RUtilpol::check_if_loaded(
 
 predicted_ages <-
   RFossilpol::chron_predict_all_ages(
-    data_source = data_to_predict,
+    data_source = data_merged,
     dir = data_storage_path, # [config_criteria]
     predict_ages_denovo = predict_ages_denovo, # [config_criteria]
     sites_to_rerun = sites_to_rerun
