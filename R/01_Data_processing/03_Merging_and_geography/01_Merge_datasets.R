@@ -77,7 +77,8 @@ user_name_patterns <- NULL
 data_clean_names <-
   RFossilpol::proc_clean_count_names(
     data_source = data_full_filtered,
-    additional_patterns = user_name_patterns
+    additional_patterns = user_name_patterns,
+    dir = data_storage_path # [config_criteria]
   )
 
 
