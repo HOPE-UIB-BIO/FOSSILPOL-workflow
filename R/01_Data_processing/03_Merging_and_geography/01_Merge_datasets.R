@@ -47,7 +47,7 @@ data_full <-
 
 # test for potential duplicated records between other data and Neotoma
 if (
-  detect_duplicates == TRUE && other_data == TRUE # [config_criteria]
+  isTRUE(detect_duplicates) && isTRUE(other_data) # [config_criteria]
 ) {
   data_full_filtered <-
     RFossilpol::proc_filter_out_duplicates(
