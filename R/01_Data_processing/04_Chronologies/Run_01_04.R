@@ -39,9 +39,8 @@ working_dir <-
 
 # run if selected in Config file
 if (
-  recalib_AD_models == TRUE
-) { # [config_criteria]
-
+  isTRUE(recalib_AD_models) # [config_criteria]
+) {
   run_ad_confirm <-
     RFossilpol::util_confirm_based_on_presence(
       dir = paste0(
@@ -57,7 +56,7 @@ if (
 
   # download data
   if (
-    run_ad_confirm == TRUE
+    isTRUE(run_ad_confirm)
   ) {
     source(
       paste0(

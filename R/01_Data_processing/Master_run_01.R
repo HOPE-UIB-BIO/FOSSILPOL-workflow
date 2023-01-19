@@ -40,7 +40,7 @@ source(
 )
 
 if (
-  other_data == TRUE
+  isTRUE(other_data)
 ) {
   source(
     paste0(

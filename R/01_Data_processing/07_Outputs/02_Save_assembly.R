@@ -57,7 +57,7 @@ RFossilpol::proc_save_assembly(
   data_source = data_filtered,
   user_sel_variables = c("long", "lat"), # [USER] Here can user variables,
   # which have to be present in the  final data assembly (other can be selected
-  # interactively, if `select_final_variables` == TRUE)
+  # interactively, if `select_final_variables` is TRUE)
   select_final_variables = select_final_variables, # [config_criteria]
   dir = data_storage_path # [config_criteria]
 )
