@@ -37,7 +37,7 @@ source(
 data_full <-
   RFossilpol::proc_get_merged_dataset(
     data_storage_path, # [config_criteria]
-    other_data
+    use_other_datasource
   )
 
 
@@ -47,7 +47,7 @@ data_full <-
 
 # test for potential duplicated records between other data and Neotoma
 if (
-  isTRUE(detect_duplicates) && isTRUE(other_data) # [config_criteria]
+  isTRUE(detect_duplicates) && isTRUE(use_other_datasource) # [config_criteria]
 ) {
   data_full_filtered <-
     RFossilpol::proc_filter_out_duplicates(

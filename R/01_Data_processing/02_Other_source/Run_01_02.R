@@ -37,7 +37,7 @@ working_dir <-
   )
 
 if (
-  isTRUE(other_data)
+  isTRUE(use_other_datasource)
 ) {
   source(
     paste0(working_dir, "01_Import_other_data.R")

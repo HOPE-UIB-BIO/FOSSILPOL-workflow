@@ -40,7 +40,7 @@ source(
 )
 
 if (
-  isTRUE(other_data)
+  isTRUE(use_other_datasource)
 ) {
   source(
     paste0(
