@@ -75,8 +75,8 @@ RFossilpol::proc_save_references(
     "meta_table",
     "author_table",
     # this trick will include `affiliation_table` only if
-    #   `other_data` is present
-    switch(isTRUE(other_data) + 1,
+    #   data from sources other than Neotoma is present
+    switch(isTRUE(use_other_datasource) + 1,
       NULL,
       "affiliation_table"
     ),
