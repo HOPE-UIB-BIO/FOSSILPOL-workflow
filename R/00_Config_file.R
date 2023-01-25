@@ -287,7 +287,7 @@ use_bookend_level <- FALSE # [USER]
 
 
 #----------------------------------------------------------#
-# 7. Set graphical options -----
+# 6. Set graphical options -----
 #----------------------------------------------------------#
 
 # set ggplot output
