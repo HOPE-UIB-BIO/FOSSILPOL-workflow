@@ -9,5 +9,5 @@ This repo contains the source code for the FOSSILPOL Workflow.
 The FOSSILPOL workflow (referred to as "the Workflow" from here on) is
 accessible in two ways:
 
-1. If a user has a [GitHub account](https://github.com/), the easiest way is to create your own GitHub repo using this GitHub template. More details about how to use GitHub templates are on [GitHub Docs](https://docs.github.com/en/repositories/creating-and-managing-repositories creating-a-repository-from-a-template).
+1. If a user has a [GitHub account](https://github.com/), the easiest way is to create your own GitHub repo using this GitHub template. More details about how to use GitHub templates are on [GitHub Docs](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
 1. Use can download the latest [Release](https://github.com/HOPE-UIB-BIOFOSSILPOL-workflow/releases) of the Workflow as a zip file.
