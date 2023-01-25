@@ -1,13 +1,13 @@
+# FOSSILPOL: The workflow to process global palaeoecological pollen data<img src="man/figures/fossilpol_logo.png" align="right" width="400" />
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+This repo is a part of the **FOSSILPOL** project. Learn more about the
+project on the [project
+websites](https://hope-uib-bio.github.io/FOSSILPOL-website/)
 
-# FOSSILPOL: The workflow to process global palaeoecological pollen data
+This repo contains the source code for the FOSSILPOL Workflow.
 
-<!-- badges: start -->
-<!-- badges: end -->
+The FOSSILPOL workflow (referred to as "the Workflow" from here on) is
+accessible in two ways:
 
-The goal of the **FOSSILPOL workflow** is to process multiple fossil pollen records to create a comprehensive, standardized dataset compilation, ready for multi-record and multi-proxy analyses. The FOSSILPOL workflow is coded as an RStudio project (in the R environment), which should be customised by the user for a specific research project.
-
-## Project website
-
-All information can be found on [FOSSILPOL website](https://hope-uib-bio.github.io/FOSSILPOL-website/)
+1. If a user has a [GitHub account](https://github.com/), the easiest way is to create your own GitHub repo using this GitHub template. More details about how to use GitHub templates are on [GitHub Docs](https://docs.github.com/en/repositories/creating-and-managing-repositories creating-a-repository-from-a-template).
+1. Use can download the latest [Release](https://github.com/HOPE-UIB-BIOFOSSILPOL-workflow/releases) of the Workflow as a zip file.
