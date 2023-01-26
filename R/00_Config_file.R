@@ -263,7 +263,7 @@ filter_by_interest_region <- TRUE # [USER]
 # Number of stratigraphic levels
 filter_by_number_of_levels <- TRUE # [USER]
 
-# St least X number stratigraphic levels within the period
+# At least X number of stratigraphic levels within the period
 #   of interest [example: X=3]
 min_n_levels <- 3
 
