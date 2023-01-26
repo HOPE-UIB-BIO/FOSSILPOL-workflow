@@ -13,7 +13,7 @@
 
 # Configuration script with the variables that should be consistent throughout
 #   the whole repo. It loads packages, defines important variables,
-#   authorises the user, and saves config file.
+#   authorises the user, and saves the config file.
 # Points that require the user’s attention are flagged by "[USER]" - flag,
 #  meaning that these are criteria that need to be checked by the user
 
@@ -21,7 +21,7 @@
 workflow_version <-
   "0.0.2"
 
-# set the current environment
+# Set the current environment
 current_env <- environment()
 
 #----------------------------------------------------------#
@@ -40,17 +40,17 @@ if (
   isFALSE(already_synch)
 ) {
   library(here)
-  # synchronise the package versions
+  # Synchronise the package versions
   renv::restore(
     lockfile = here::here("renv/library_list.lock")
   )
   already_synch <- TRUE
 
-  # save snapshot of package versions
+  # Save snapshot of package versions
   # renv::snapshot(lockfile =  "renv/library_list.lock")  # do only for update
 }
 
-# define packages
+# Define packages
 package_list <-
   c(
     "RFossilpol",
@@ -59,7 +59,7 @@ package_list <-
     "tidyverse"
   )
 
-# load all packages
+# Attach all packages
 sapply(package_list, library, character.only = TRUE)
 
 
@@ -69,14 +69,14 @@ sapply(package_list, library, character.only = TRUE)
 
 current_date <- Sys.Date()
 
-# project directory is set up by 'here' package, Adjust if needed
+# Project directory is set up by the {here} package, Adjust if needed
 current_dir <- here::here()
 
 # Define the directory (external) for storing big data files
 #   Default is in the current project
 data_storage_path <- current_dir # [USER]
 
-# create all essential folders
+# Create all essential folders
 RFossilpol::util_make_datastorage_folders(
   dir = data_storage_path # [config_criteria]
 )
@@ -85,7 +85,7 @@ RFossilpol::util_make_datastorage_folders(
 # 3. Load functions -----
 #----------------------------------------------------------#
 
-# get vector of general functions
+# Get a vector of general functions
 fun_list <-
   list.files(
     path = "R/Functions/",
@@ -93,7 +93,7 @@ fun_list <-
     recursive = TRUE
   )
 
-# load the function into global environment
+# Load the function into the global environment
 sapply(
   paste0("R/Functions/", fun_list, sep = ""),
   source
@@ -104,7 +104,7 @@ sapply(
 # 4. Project dataset database -----
 #--------------------------------------------------#
 
-# check the presence of dataset database and create it if necessary
+# Check the presence of a dataset database and create it if necessary
 if (
   isFALSE(
     "project_dataset_database.rds" %in%
@@ -194,16 +194,17 @@ chron_order <-
 # Chronology needs to have at least X control points [example: X=2]
 min_n_of_control_points <- 2 # [USER]
 
-# If thickness of control point is missing, assign X cm [example: X=1]
+# If the thickness of a control point is missing, assign X cm [example: X=1]
 default_thickness <- 1 # [USER]
 
-# If age error of control point is missing, assign X yr [example: X=100]
+# If the age error of a control point is missing, assign X yr [example: X=100]
 default_error <- 100 # [USER]
 
-# maximum accepted age error of chron.control point [example: X=3000]
+# Maximum accepted age error of chron.control point [example: X=3000]
 max_age_error <- 3000 # [USER]
 
-# depth at which "Guess" is accepted as chronology control point [example: X=10]
+# Depth at which "Guess" is accepted as a chronology control
+#   point [example: X=10]
 guess_depth <- 10 # [USER]
 
 # Bchron settings
@@ -221,25 +222,25 @@ iteration_multiplier <- 5 # [USER]
 # 5.6. Filtering criteria -----
 #--------------------------------------------------#
 
-# criteria to filter out stratigraphic levels and pollen records
+# Criteria to filter out stratigraphic levels and pollen records
 
 #----------------------------------------#
 
 # Pollen sums
 filter_by_pollen_sum <- TRUE # [USER]
 
-# each level at least X individual pollen gains
+# Each stratigraphic level of at least X individual pollen gains [example: X=0]
 min_n_grains <- 0 # [USER]
-# ideal number of counts
+# Ideal number of counts
 target_n_grains <- 100 # [USER]
-# threshold of number of samples with ideal counts
+# Threshold of number of samples with ideal counts
 percentage_samples <- 0 # [USER]
 
 #----------------------------------------#
 
 # Age limits
-#   Note that the actual ages have to specified per region, defined during the
-#   process of Workflow
+#   Note that the actual ages have to be specified per region, defined during
+# the process of Workflow
 filter_by_age_limit <- TRUE # [USER]
 
 #----------------------------------------#
@@ -247,14 +248,14 @@ filter_by_age_limit <- TRUE # [USER]
 # Maximum extrapolation
 filter_by_extrapolation <- TRUE # [USER]
 
-# how much age can be extrapolated beyond the oldest chronology control point
+# How much age can be extrapolated beyond the oldest chronology control point?
 maximum_age_extrapolation <- Inf # [USER]
 
 #----------------------------------------#
 
-# Beyond period of interest
-#   Note that the actual ages have to specified per region, defined during the
-#   process of Workflow
+# Beyond the period of interest
+#   Note that the actual ages have to be specified per region, defined during
+# the process of Workflow
 filter_by_interest_region <- TRUE # [USER]
 
 #----------------------------------------#
@@ -262,27 +263,31 @@ filter_by_interest_region <- TRUE # [USER]
 # Number of stratigraphic levels
 filter_by_number_of_levels <- TRUE # [USER]
 
-# at least X number stratigraphic levels within period of interest [example: X=3]
+# St least X number stratigraphic levels within the period
+#   of interest [example: X=3]
 min_n_levels <- 3
 
 #----------------------------------------#
 
 # Additional setting
 
-# Should 95th age quantile be used for data filtration?
-#   It FALSE (default), the estimated age will be used for all checks about age
-#     of a level. However, if TRUE, then the 95th age quantile will be used.
-#   This will result in more stable data assembly between different result
-#     of age-depth modelling BUT require additional data preparation before
-#     analytical part
+# Should the 95th age quantile be used for data filtration?
+# If FALSE (default), the estimated age will be used for all checks about the
+#   age of a stratigraphic level. However, if TRUE, then the 95th age quantile
+#   will be used.
+# This will result in more stable data assembly between different results
+#   of age-depth modelling BUT require additional data preparation before
+#   analytical part.
 use_age_quantiles <- FALSE # [USER]
 
-# Should all data filtration omit one additional level in the old period?
-#   If TRUE, all filtering will proceed normally but one additiona "bookend"
-#     level will be always kept. A "bookend" level is a subsequntial level older
-#     than the oldest level that passed the filration.
-#   A "bookend" can help provide anchor information older than period of 
-#     interest
+# Should all data filtration omit one additional stratigraphic level in
+#   the old period?
+# If TRUE, all filtering will proceed normally but one additional "bookend"
+#   stratigraphic level will be always kept.
+# A "bookend" stratigraphic level is a subsequential stratigraphic level
+#   older than the oldest stratigraphic level that passed the filtration.
+# A "bookend" can help provide anchor information older than the period of
+#     interest.
 use_bookend_level <- FALSE # [USER]
 
 
@@ -290,25 +295,25 @@ use_bookend_level <- FALSE # [USER]
 # 6. Set graphical options -----
 #----------------------------------------------------------#
 
-# set ggplot output
+# Set ggplot output
 ggplot2::theme_set(
   ggplot2::theme_classic()
 )
 
-# define general
+# Define general
 text_size <- 16 # [USER]
 line_size <- 0.1 # [USER]
 point_size <- 3 # [USER]
 
-# define output sizes
+# Define output sizes
 image_width <- 30 # [USER]
 image_height <- 15 # [USER]
 image_units <- "cm" # [USER]
 image_dpi <- 300 # [USER]
 
-# define pallets
+# Define pallets
 
-# define common colours
+# Define common colours
 
 
 #----------------------------------------------------------#
