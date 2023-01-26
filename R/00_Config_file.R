@@ -277,7 +277,7 @@ min_n_levels <- 3
 #   will be used.
 # This will result in more stable data assembly between different results
 #   of age-depth modelling BUT require additional data preparation before
-#   analytical part.
+#   the analytical part.
 use_age_quantiles <- FALSE # [USER]
 
 # Should all data filtration omit one additional stratigraphic level in
