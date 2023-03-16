@@ -25,21 +25,26 @@ package_list <-
     "assertthat",
     "Bchron",
     "dplyr",
+    "forcats",
     "furrr",
     "future",
     "ggplot2",
+    "ggpubr",
     "grDevices",
     "here",
     "httr",
     "IntCal",
     "janitor",
+    "knitr",
     "lifecycle",
     "magrittr",
-    "plyr",
+    "methods",
     "purrr",
-    "R.utils",
+    "qs",
+    "raster",
     "rcarbon",
     "readr",
+    "readxl",
     "remotes",
     "rioja",
     "rlang",
@@ -52,13 +57,14 @@ package_list <-
     "tidyselect",
     "tidyverse",
     "usethis",
-    "utils"
+    "utils",
+    "waldo",
+    "zip"
   )
 
 # define helper function
 install_packages <-
   function(pkgs_list) {
-
     # install all packages in the lst from CRAN
     sapply(pkgs_list, utils::install.packages, character.only = TRUE)
 
@@ -66,6 +72,13 @@ install_packages <-
     remotes::install_github(
       repo = "HOPE-UIB-BIO/R-Utilpol-package",
       ref = "HEAD",
+      quiet = FALSE,
+      upgrade = "ask"
+    )
+
+    # install neotoma2 from GitHub
+    remotes::install_github(
+      repo = "NeotomaDB/neotoma2",
       quiet = FALSE,
       upgrade = "ask"
     )
