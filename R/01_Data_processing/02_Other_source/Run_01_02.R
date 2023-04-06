@@ -3,15 +3,15 @@
 #
 #                 The FOSSILPOL workflow
 #
-#         Run all private data preparation scripts
+#         Run all other data preparation scripts
 #
 #
 #   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
-#                         2021
+#                         2023
 #
 #----------------------------------------------------------#
 
-# Run all scripts in `/R/01_Data_processing/02_Private_source/`
+# Run all scripts in `/R/01_Data_processing/02_Other_source/`
 
 #----------------------------------------------------------#
 # 1. Set up run -----
@@ -33,11 +33,13 @@ source(
 working_dir <-
   paste0(
     current_dir, # [config_criteria]
-    "/R/01_Data_processing/02_Private_source/"
+    "/R/01_Data_processing/02_Other_source/"
   )
 
-if (private_data == TRUE) {
+if (
+  isTRUE(use_other_datasource)
+) {
   source(
-    paste0(working_dir, "01_Import_private_data.R")
+    paste0(working_dir, "01_Import_other_data.R")
   )
 }

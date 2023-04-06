@@ -8,11 +8,11 @@
 #
 #
 #   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
-#                         2021
+#                         2023
 #
 #----------------------------------------------------------#
 
-#  Download the pollen sequences from Neotoma API
+#  Download the pollen records from Neotoma API
 
 #----------------------------------------------------------#
 # 1. Set up  -----
@@ -25,13 +25,13 @@ source(
   here::here("R/00_Config_file.R")
 )
 
-RFossilpol::util_output_message(
+RUtilpol::output_heading(
   msg = "Start to download Neotoma files"
 )
 
 
 #----------------------------------------------------------#
-# 2. Download the Neotoma pollen database -----
+# 2. Get records from Neotoma pollen database -----
 #----------------------------------------------------------#
 
 allds <-
@@ -40,27 +40,38 @@ allds <-
     long_min, # [config_criteria]
     long_max, # [config_criteria]
     lat_min, # [config_criteria]
-    lat_max # [config_criteria]
+    lat_max, # [config_criteria]
+    loc = NULL # [USER]
   )
 
-# Download all sequences
+
+#----------------------------------------------------------#
+# 2. Download records -----
+#----------------------------------------------------------#
+
 neotoma_download <-
-  RFossilpol::proc_neo_download_sequences(allds)
-
+  RFossilpol::proc_neo_download_records(
+    allds = allds,
+    dir = paste0(
+      data_storage_path, # [config_criteria]
+      "/Data/Input/Neotoma_download"
+    )
+  )
 
 #----------------------------------------------------------#
-# 2. Save the Neotoma pollen database -----
+# 3. Save -----
 #----------------------------------------------------------#
 
-RFossilpol::util_output_comment(
+RUtilpol::output_comment(
   msg = "Saving 'neotoma_download'"
 )
 
-RFossilpol::util_save_if_latests(
-  file_name = "neotoma_download",
+RUtilpol::save_latest_file(
+  object_to_save = neotoma_download,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Input/Neotoma_download"
   ),
-  prefered_format = "rds"
+  prefered_format = "rds",
+  use_sha = TRUE
 )

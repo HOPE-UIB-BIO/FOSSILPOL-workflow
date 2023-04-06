@@ -7,7 +7,7 @@
 #
 #
 #   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
-#                         2021
+#                         2023
 #
 #----------------------------------------------------------#
 
@@ -34,7 +34,7 @@ current_env <- rlang::current_env()
 #----------------------------------------------------------#
 
 data_filtered <-
-  RFossilpol::util_load_latest_file(
+  RUtilpol::get_latest_file(
     file_name = "data_filtered",
     dir = paste0(
       data_storage_path, # [config_criteria]
@@ -43,7 +43,7 @@ data_filtered <-
   )
 
 # test the presence of data
-RFossilpol::util_check_if_loaded(
+RUtilpol::check_if_loaded(
   file_name = "data_filtered",
   env = current_env
 )
@@ -57,7 +57,7 @@ RFossilpol::proc_save_assembly(
   data_source = data_filtered,
   user_sel_variables = c("long", "lat"), # [USER] Here can user variables,
   # which have to be present in the  final data assembly (other can be selected
-  # interactively, if `select_final_variables` == TRUE)
+  # interactively, if `select_final_variables` is TRUE)
   select_final_variables = select_final_variables, # [config_criteria]
   dir = data_storage_path # [config_criteria]
 )

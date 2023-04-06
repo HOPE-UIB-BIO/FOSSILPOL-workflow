@@ -7,7 +7,7 @@
 #
 #
 #   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
-#                         2021
+#                         2023
 #
 #----------------------------------------------------------#
 
@@ -24,7 +24,7 @@ source(
   here::here("R/00_Config_file.R")
 )
 
-RFossilpol::util_output_message(
+RUtilpol::output_heading(
   msg = "Saving all Chronology models as figures"
 )
 

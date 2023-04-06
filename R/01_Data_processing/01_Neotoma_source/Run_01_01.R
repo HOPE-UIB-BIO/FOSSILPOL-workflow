@@ -7,7 +7,7 @@
 #
 #
 #   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
-#                         2021
+#                         2023
 #
 #----------------------------------------------------------#
 
@@ -38,9 +38,8 @@ working_dir <-
   )
 
 # run if selected in Config file
-if
-(
-  neotoma_new_download == TRUE
+if (
+  isTRUE(neotoma_new_download)
 ) {
   download_confirm <-
     RFossilpol::util_confirm_based_on_presence(
@@ -56,9 +55,8 @@ if
     )
 
   # download data
-  if
-  (
-    download_confirm == TRUE
+  if (
+    isTRUE(download_confirm)
   ) {
     source(
       paste0(working_dir, "01_Download_neotoma.R")

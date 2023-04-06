@@ -7,7 +7,7 @@
 #
 #
 #   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
-#                         2021
+#                         2023
 #
 #----------------------------------------------------------#
 
@@ -24,23 +24,28 @@ package_list <-
   c(
     "assertthat",
     "Bchron",
-    "devtools",
     "dplyr",
+    "forcats",
     "furrr",
     "future",
     "ggplot2",
+    "ggpubr",
     "grDevices",
     "here",
     "httr",
     "IntCal",
     "janitor",
+    "knitr",
     "lifecycle",
     "magrittr",
-    "plyr",
+    "methods",
     "purrr",
-    "R.utils",
+    "qs",
+    "raster",
     "rcarbon",
     "readr",
+    "readxl",
+    "remotes",
     "rioja",
     "rlang",
     "sf",
@@ -52,21 +57,37 @@ package_list <-
     "tidyselect",
     "tidyverse",
     "usethis",
-    "utils"
+    "utils",
+    "waldo",
+    "zip"
   )
 
 # define helper function
 install_packages <-
   function(pkgs_list) {
-
     # install all packages in the lst from CRAN
     sapply(pkgs_list, utils::install.packages, character.only = TRUE)
 
-    # install RFossilpol from GitHub
-    devtools::install_github(
-      "HOPE-UIB-BIO/R-Fossilpol-package",
+    # install RUtilpol from GitHub
+    remotes::install_github(
+      repo = "HOPE-UIB-BIO/R-Utilpol-package",
+      ref = "HEAD",
       quiet = FALSE,
-      upgrade = FALSE
+      upgrade = "ask"
+    )
+
+    # install neotoma2 from GitHub
+    remotes::install_github(
+      repo = "NeotomaDB/neotoma2",
+      quiet = FALSE,
+      upgrade = "ask"
+    )
+
+    # install RFossilpol from GitHub
+    remotes::install_github(
+      repo = "HOPE-UIB-BIO/R-Fossilpol-package@*release",
+      quiet = FALSE,
+      upgrade = "ask"
     )
   }
 
@@ -114,13 +135,16 @@ install_packages(package_list)
 library(here)
 
 # if there is no lock file present make a new snapshot
-if
-(
+if (
   isFALSE("library_list.lock" %in% list.files(here::here("renv")))
 ) {
-  renv::snapshot(lockfile = here::here("renv/library_list.lock"))
+  renv::snapshot(
+    lockfile = here::here("renv/library_list.lock")
+  )
 } else {
-  renv::restore(lockfile = here::here("renv/library_list.lock"))
+  renv::restore(
+    lockfile = here::here("renv/library_list.lock")
+  )
 }
 
 

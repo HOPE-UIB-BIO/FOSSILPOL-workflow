@@ -7,7 +7,7 @@
 #
 #
 #   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
-#                         2021
+#                         2023
 #
 #----------------------------------------------------------#
 
@@ -28,7 +28,7 @@ source(
 # set the current environment
 current_env <- rlang::current_env()
 
-RFossilpol::util_output_message(
+RUtilpol::output_heading(
   msg = "Preparation of harmonisation tables and harmonisation of pollen taxa"
 )
 
@@ -38,7 +38,7 @@ RFossilpol::util_output_message(
 #----------------------------------------------------------#
 
 data_with_chronologies <-
-  RFossilpol::util_load_latest_file(
+  RUtilpol::get_latest_file(
     file_name = "data_with_chronologies",
     dir = paste0(
       data_storage_path, # [config_criteria]
@@ -47,7 +47,7 @@ data_with_chronologies <-
   )
 
 # test the presence of data
-RFossilpol::util_check_if_loaded(
+RUtilpol::check_if_loaded(
   file_name = "data_with_chronologies",
   env = current_env
 )
@@ -83,10 +83,12 @@ data_harmonised <-
 # 5. Save the data  -----
 #----------------------------------------------------------#
 
-RFossilpol::util_save_if_latests(
-  file_name = "data_harmonised",
+RUtilpol::save_latest_file(
+  object_to_save = data_harmonised,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Processed/Data_harmonised"
-  )
+  ),
+  prefered_format = "rds",
+  use_sha = TRUE
 )

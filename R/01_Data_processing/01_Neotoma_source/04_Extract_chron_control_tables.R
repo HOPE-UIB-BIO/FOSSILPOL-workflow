@@ -7,7 +7,7 @@
 #
 #
 #   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
-#                         2021
+#                         2023
 #
 #----------------------------------------------------------#
 
@@ -28,7 +28,7 @@ source(
 # set the current environment
 current_env <- rlang::current_env()
 
-RFossilpol::util_output_message(
+RUtilpol::output_heading(
   msg = "Starting extracting Neotoma chron.control"
 )
 
@@ -36,12 +36,12 @@ RFossilpol::util_output_message(
 # 2. Load latest data  -----
 #----------------------------------------------------------#
 
-RFossilpol::util_output_comment(
+RUtilpol::output_comment(
   msg = "Loading Neotoma download file"
 )
 
 neotoma_download <-
-  RFossilpol::util_load_latest_file(
+  RUtilpol::get_latest_file(
     file_name = "neotoma_download",
     dir = paste0(
       data_storage_path, # [config_criteria]
@@ -50,17 +50,17 @@ neotoma_download <-
   )
 
 # test the presence of data
-RFossilpol::util_check_if_loaded(
+RUtilpol::check_if_loaded(
   file_name = "neotoma_download",
   env = current_env
 )
 
-RFossilpol::util_output_comment(
+RUtilpol::output_comment(
   msg = "Loading Neotoma dep.env file"
 )
 
 neotoma_meta_samples_dep_envt_filtered <-
-  RFossilpol::util_load_latest_file(
+  RUtilpol::get_latest_file(
     file_name = "neotoma_meta_samples_dep_envt_filtered",
     dir = paste0(
       data_storage_path, # [config_criteria]
@@ -69,7 +69,7 @@ neotoma_meta_samples_dep_envt_filtered <-
   )
 
 # test the presence of data
-RFossilpol::util_check_if_loaded(
+RUtilpol::check_if_loaded(
   file_name = "neotoma_meta_samples_dep_envt_filtered",
   env = current_env
 )
@@ -102,15 +102,16 @@ neotoma_meta_chron_control <-
 # 5. Save  -----
 #----------------------------------------------------------#
 
-RFossilpol::util_output_comment(
+RUtilpol::output_comment(
   msg = "Saving"
 )
 
-RFossilpol::util_save_if_latests(
-  file_name = "neotoma_meta_chron_control",
+RUtilpol::save_latest_file(
+  object_to_save = neotoma_meta_chron_control,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Processed/Neotoma_processed/Neotoma_chron_control"
   ),
-  prefered_format = "rds"
+  prefered_format = "rds",
+  use_sha = TRUE
 )

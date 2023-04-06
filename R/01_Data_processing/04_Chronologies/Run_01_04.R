@@ -7,13 +7,13 @@
 #
 #
 #   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
-#                         2021
+#                         2023
 #
 #----------------------------------------------------------#
 
 # Run all scripts in `/R/01_Data_processing/04_Chronologies/`
 #   Prepare chronology control tables, run Bchon, and predict age for selected
-#   sequences
+#   records
 
 #----------------------------------------------------------#
 # 1. Set up run -----
@@ -38,18 +38,16 @@ working_dir <-
   )
 
 # run if selected in Config file
-if
-(
-  recalib_AD_models == TRUE
-) { # [config_criteria]
-
+if (
+  isTRUE(recalib_AD_models) # [config_criteria]
+) {
   run_ad_confirm <-
     RFossilpol::util_confirm_based_on_presence(
       dir = paste0(
         data_storage_path, # [config_criteria]
         "/Data/Processed/Chronology/Predicted_ages"
       ),
-      file_name = "chron_predicted_ages",
+      file_name = "predicted_ages",
       msg = paste(
         "Detcted previous calculation of age-depth models.",
         "Are you sure you want to run age-depth modeling?"
@@ -57,9 +55,8 @@ if
     )
 
   # download data
-  if
-  (
-    run_ad_confirm == TRUE
+  if (
+    isTRUE(run_ad_confirm)
   ) {
     source(
       paste0(

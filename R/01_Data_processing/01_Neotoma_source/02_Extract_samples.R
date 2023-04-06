@@ -7,7 +7,7 @@
 #
 #
 #   O. Mottl, S. Flantua, K. Bhatta, V. Felde, A. Seddon
-#                         2021
+#                         2023
 #
 #----------------------------------------------------------#
 
@@ -28,7 +28,7 @@ source(
 # set the current environment
 current_env <- rlang::current_env()
 
-RFossilpol::util_output_message(
+RUtilpol::output_heading(
   msg = "Processing Neotoma files"
 )
 
@@ -37,13 +37,14 @@ RFossilpol::util_output_message(
 # 2. Load latest data  -----
 #----------------------------------------------------------#
 
-RFossilpol::util_output_message(
-  msg = "Loading Neotoma file"
+RUtilpol::output_heading(
+  msg = "Loading Neotoma file",
+  size = "h2"
 )
 
 # load the data
 neotoma_download <-
-  RFossilpol::util_load_latest_file(
+  RUtilpol::get_latest_file(
     file_name = "neotoma_download",
     dir = paste0(
       data_storage_path, # [config_criteria]
@@ -52,7 +53,7 @@ neotoma_download <-
   )
 
 # test the presence of data
-RFossilpol::util_check_if_loaded(
+RUtilpol::check_if_loaded(
   file_name = "neotoma_download",
   env = current_env
 )
@@ -99,15 +100,16 @@ RFossilpol::proc_neo_update_project_database(
 # 4. Save the data -----
 #----------------------------------------------------------#
 
-RFossilpol::util_output_comment(
+RUtilpol::output_comment(
   msg = "Saving outputs"
 )
 
-RFossilpol::util_save_if_latests(
-  file_name = "neotoma_meta_samples",
+RUtilpol::save_latest_file(
+  object_to_save = neotoma_meta_samples,
   dir = paste0(
     data_storage_path, # [config_criteria]
     "/Data/Processed/Neotoma_processed/Neotoma_meta"
   ),
-  prefered_format = "rds"
+  prefered_format = "rds",
+  use_sha = TRUE
 )
