@@ -19,7 +19,7 @@
 
 # Version of the Workflow
 workflow_version <-
-  "0.0.2"
+  "1.0.0"
 
 # Set the current environment
 current_env <- environment()
