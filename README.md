@@ -1,4 +1,4 @@
-# FOSSILPOL: The workflow to process global palaeoecological pollen data<img src="https://hope-uib-bio.github.io/FOSSILPOL-website/figures/fossilpol_logo.png" align="right" width="400" />
+# FOSSILPOL: The workflow to process global palaeoecological pollen data<img src="https://hope-uib-bio.github.io/FOSSILPOL-website/figures/Logo%20FOSSILPOL%20big%20-%20600ppi.png" align="right" width="400" />
 
 [![Version](https://img.shields.io/github/v/release/HOPE-UIB-BIO/FOSSILPOL-workflow?label=Version&logo=github)](https://github.com/HOPE-UIB-BIO/FOSSILPOL-workflow/releases)
 
