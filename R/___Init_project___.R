@@ -15,20 +15,49 @@
 #   Needs to be run only once
 
 #----------------------------------------------------------#
-# Step 0: Install critical packages -----
+# Step 0: Install {renv} for package management -----
 #----------------------------------------------------------#
 
-# {renv} for package management
-utils::install.packages("renv")
+if (
+  "renv" %in% utils::installed.packages()
+) {
+  library(renv)
+} else {
+  # install package
+  utils::install.packages("renv")
 
-# {here} for file navigation
-utils::install.packages("here")
+  # load the package
+  library(renv)
+}
 
 #----------------------------------------------------------#
-# Step 1: Synchronize package versions with the project -----
+# Step 1: Activate 'renv' project -----
 #----------------------------------------------------------#
 
-library(here)
+# NOTE: The R may ask the User to restart the session (R).
+#   After that, continue with the next step
+
+renv::activate()
+
+#----------------------------------------------------------#
+# Step 1: Install {here} for file navigation -----
+#----------------------------------------------------------#
+
+if (
+  "here" %in% utils::installed.packages()
+) {
+  library(here)
+} else {
+  # install package
+  utils::install.packages("here")
+
+  # load the package
+  library(here)
+}
+
+#----------------------------------------------------------#
+# Step 2: Synchronize package versions with the project -----
+#----------------------------------------------------------#
 
 # If there is no lock file present make a new snapshot
 if (
@@ -48,16 +77,6 @@ if (
 
   cat("Continue with this script", "\n")
 }
-
-#----------------------------------------------------------#
-# Step 2: Activate 'renv' project -----
-#----------------------------------------------------------#
-
-# NOTE: The R may ask the User to restart the session (R).
-#   After that, continue with the next step
-
-renv::activate()
-
 
 #----------------------------------------------------------#
 # Step 3: Install packages to the project -----
