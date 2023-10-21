@@ -11,16 +11,79 @@
 #
 #----------------------------------------------------------#
 
-# Script to prepare all necessary components of environment to run the Project.
+# Script to prepare all components of the environment to run the Project.
 #   Needs to be run only once
 
+#----------------------------------------------------------#
+# Step 0: Install {renv} for package management -----
+#----------------------------------------------------------#
+
+if (
+  "renv" %in% utils::installed.packages()
+) {
+  library(renv)
+} else {
+  # install package
+  utils::install.packages("renv")
+
+  # load the package
+  library(renv)
+}
 
 #----------------------------------------------------------#
-# Step 0: Define package list and custom function -----
+# Step 1: Activate 'renv' project -----
 #----------------------------------------------------------#
 
-# list of all CRAN packages
-package_list <-
+# NOTE: The R may ask the User to restart the session (R).
+#   After that, continue with the next step
+
+renv::activate()
+
+#----------------------------------------------------------#
+# Step 1: Install {here} for file navigation -----
+#----------------------------------------------------------#
+
+if (
+  "here" %in% utils::installed.packages()
+) {
+  library(here)
+} else {
+  # install package
+  utils::install.packages("here")
+
+  # load the package
+  library(here)
+}
+
+#----------------------------------------------------------#
+# Step 2: Synchronize package versions with the project -----
+#----------------------------------------------------------#
+
+# If there is no lock file present make a new snapshot
+if (
+  isTRUE("library_list.lock" %in% list.files(here::here("renv")))
+) {
+  cat("The project already has a lockfile. Restoring packages", "\n")
+
+  renv::restore(
+    lockfile = here::here("renv/library_list.lock")
+  )
+
+  cat("Set up completed. You can continute to run the project", "\n")
+
+  cat("Do NOT run the rest of this script", "\n")
+} else {
+  cat("The project seems to be new (no lockfile)", "\n")
+
+  cat("Continue with this script", "\n")
+}
+
+#----------------------------------------------------------#
+# Step 3: Install packages to the project -----
+#----------------------------------------------------------#
+
+# install all packages in the lst from CRAN
+sapply(
   c(
     "assertthat",
     "Bchron",
@@ -39,6 +102,7 @@ package_list <-
     "lifecycle",
     "magrittr",
     "methods",
+    "neotoma2",
     "purrr",
     "qs",
     "raster",
@@ -60,94 +124,32 @@ package_list <-
     "utils",
     "waldo",
     "zip"
-  )
+  ),
+  utils::install.packages,
+  character.only = TRUE
+)
 
-# define helper function
-install_packages <-
-  function(pkgs_list) {
-    # install all packages in the lst from CRAN
-    sapply(pkgs_list, utils::install.packages, character.only = TRUE)
+# install RUtilpol from GitHub
+remotes::install_github(
+  repo = "HOPE-UIB-BIO/R-Utilpol-package",
+  ref = "HEAD",
+  quiet = FALSE,
+  upgrade = "ask"
+)
 
-    # install RUtilpol from GitHub
-    remotes::install_github(
-      repo = "HOPE-UIB-BIO/R-Utilpol-package",
-      ref = "HEAD",
-      quiet = FALSE,
-      upgrade = "ask"
-    )
-
-    # install neotoma2 from GitHub
-    remotes::install_github(
-      repo = "NeotomaDB/neotoma2",
-      quiet = FALSE,
-      upgrade = "ask"
-    )
-
-    # install RFossilpol from GitHub
-    remotes::install_github(
-      repo = "HOPE-UIB-BIO/R-Fossilpol-package@*release",
-      quiet = FALSE,
-      upgrade = "ask"
-    )
-  }
-
+# install RFossilpol from GitHub
+remotes::install_github(
+  repo = "HOPE-UIB-BIO/R-Fossilpol-package@*release",
+  quiet = FALSE,
+  upgrade = "ask"
+)
 
 #----------------------------------------------------------#
-# Step 1: Install 'renv' package -----
+# Step 4: Save versions of packages -----
 #----------------------------------------------------------#
 
-utils::install.packages("renv")
+renv::snapshot(
+  lockfile = here::here("renv/library_list.lock")
+)
 
-
-#----------------------------------------------------------#
-# Step 2: Deactivate 'renv' package -----
-#----------------------------------------------------------#
-
-# deactivate to make sure that packages are updated on the machine
-renv::deactivate()
-
-
-#----------------------------------------------------------#
-# Step 3: Install packages to the machine
-#----------------------------------------------------------#
-
-install_packages(package_list)
-
-
-#----------------------------------------------------------#
-# Step 4: Activate 'renv' project
-#----------------------------------------------------------#
-
-renv::activate()
-
-
-#----------------------------------------------------------#
-# Step 5: Install packages to the project
-#----------------------------------------------------------#
-
-install_packages(package_list)
-
-
-#----------------------------------------------------------#
-# Step 6: Synchronize package versions with the project
-#----------------------------------------------------------#
-
-library(here)
-
-# if there is no lock file present make a new snapshot
-if (
-  isFALSE("library_list.lock" %in% list.files(here::here("renv")))
-) {
-  renv::snapshot(
-    lockfile = here::here("renv/library_list.lock")
-  )
-} else {
-  renv::restore(
-    lockfile = here::here("renv/library_list.lock")
-  )
-}
-
-
-#----------------------------------------------------------#
-# Step 7: Run the project
-#----------------------------------------------------------#
+cat("Set up completed. You can continute to run the project", "\n")
